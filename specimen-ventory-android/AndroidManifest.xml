@@ -14,5 +14,11 @@
         <activity android:name=".activity.SurgerySelectActivity"
                   android:label="@string/app_name">
         </activity>
+        <activity android:name=".activity.HeadSurgeryFormActivity"
+                  android:label="@string/app_name">
+        </activity>
+        <activity android:name=".activity.IVSurgeryFormActivity"
+                  android:label="@string/app_name">
+        </activity>
     </application>
 </manifest> 

@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyActivity</string>
+    <string name="app_name">specimen-ventory</string>
+    <string name="new_surgery">New Surgery</string>
+    <string name="list_specimen">View Specimen</string>
+    <string name="radio_iv_surgery">IV Surgery</string>
+    <string name="radio_head_surgery">Head Surgery</string>
+    <string name="radio_surgery_dialog">Select a Surgery Type:</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_next">Next</string>
 </resources>

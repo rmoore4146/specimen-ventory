@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:layout_centerHorizontal="true"
+              >
+    <TextView
+            android:id="@+id/radioDialogLabel"
+            android:text="@string/radio_surgery_dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:layout_centerHorizontal="true">
+    </TextView>
+    <RadioGroup
+            android:layout_margin="10dip"
+            android:id="@+id/radioSurgerySelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioDialogLabel">
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioIVSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_iv_surgery"
+                android:checked="true" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioHeadSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_head_surgery" />
+    </RadioGroup>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_centerHorizontal="true">
+        <Button
+                android:layout_margin="10dip"
+                android:layout_below="@id/radioSurgerySelect"
+                android:id="@+id/nextButtonDisplay"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/button_next" />
+        <Button
+                android:layout_margin="10dip"
+                android:layout_below="@id/radioSurgerySelect"
+                android:layout_toRightOf="@id/nextButtonDisplay"
+                android:id="@+id/cancelButton"
+                android:layout_width="110dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="@string/button_cancel" />
+    </RelativeLayout>
+</RelativeLayout>
