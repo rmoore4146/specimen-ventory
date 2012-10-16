@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:screenOrientation="landscape"
+                android:background="@drawable/background">
+
+
+    <ScrollView android:id="@+id/surgeryInputScrollView"
+                android:layout_marginBottom="50dip"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_above="@+id/ButtonBar">
+
+        <TableLayout android:id="@+id/tableLayout1"
+                     android:layout_width="fill_parent"
+                     android:layout_height="wrap_content"
+                     android:stretchColumns="1">
+            <TextView android:text="@string/verify_table_title"
+                      android:gravity="center"
+                      android:textSize="20dip"/>
+
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/title_label"
+                          android:gravity="right"
+                          android:paddingRight="10dip"/>
+                <EditText android:id="@+id/verifyTitleInput"
+                          android:inputType="text"
+                          android:text="" />
+            </TableRow>
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/date_label"
+                          android:gravity="right"
+                          android:paddingRight="10dip"/>
+                <EditText android:id="@+id/verifyDateInput"
+                          android:inputType="text"
+                          android:text=""/>
+            </TableRow>
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/start_time_label"
+                          android:gravity="right"
+                          android:paddingRight="10dip"/>
+                <EditText android:id="@+id/verifyStartTimeInput"
+                          android:inputType="date"
+                          android:text=""/>
+            </TableRow>
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/end_time_label"
+                          android:gravity="right"
+                          android:paddingRight="10dip"/>
+                <EditText android:id="@+id/verifyEndTimeInput"
+                          android:inputType="date"
+                          android:text=""/>
+            </TableRow>
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/location_label"
+                          android:gravity="right"
+                          android:paddingRight="10dip"/>
+                <EditText android:id="@+id/verifyLocaionInput"
+                          android:inputType="text"
+                          android:text=""/>
+            </TableRow>
+            <TableRow android:padding="5dp">
+                <TextView android:text="@string/silencer_checkbox_label"/>
+                <CheckBox android:id="@+id/silencePhoneButton"
+                          android:layout_height="wrap_content"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <RelativeLayout android:id="@+id/ButtonBar"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_below="@id/verify_layout"
+                    android:layout_marginTop="5dip">
+
+        <Button android:id="@+id/cancelButton"
+                android:text="@string/cancel_button_text"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                />
+
+        <Button android:id="@+id/verifyButton" android:layout_width="150dp"
+                android:layout_height="wrap_content" android:text="@string/verify_button_text"
+                android:layout_toRightOf="@+id/cancelButton"
+                android:gravity="center"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

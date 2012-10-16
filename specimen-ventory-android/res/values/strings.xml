@@ -8,4 +8,5 @@
     <string name="radio_surgery_dialog">Select a Surgery Type:</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_next">Next</string>
+    <string name="button_submit">Submit</string>
 </resources>
