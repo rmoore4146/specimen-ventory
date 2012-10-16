@@ -5,4 +5,6 @@ package com.specimen.inventory.service.api;
  * date: 10/15/12
  */
 public interface SpecimenService {
+
+
 }
