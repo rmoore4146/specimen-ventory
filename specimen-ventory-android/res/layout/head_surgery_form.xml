@@ -6,9 +6,15 @@
                 android:layout_height="match_parent"
                 android:screenOrientation="landscape">
 
-    <include android:id="@+id/importedSurgeryFields" layout="@layout/surgery_form" />
-    <include android:id="@+id/buttonBar" layout="@layout/surgery_form_buttons" />
+    <ScrollView android:id="@+id/surgeryInputScrollView"
+                android:layout_marginBottom="50dip"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
 
+        <include android:id="@+id/importedSurgeryFields" layout="@layout/surgery_form" />
+
+    </ScrollView>
+    <include android:id="@+id/buttonBar" layout="@layout/surgery_form_buttons" />
 </RelativeLayout>
 
 

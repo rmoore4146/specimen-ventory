@@ -9,4 +9,19 @@
     <string name="button_cancel">Cancel</string>
     <string name="button_next">Next</string>
     <string name="button_submit">Submit</string>
+    <string name="surgery_information_header">Surgery Information</string>
+    <string name="surgery_form_date_label">Date: </string>
+    <string name="surgery_form_time_start_label">Time Start: </string>
+    <string name="surgery_form_time_end_label">Time End: </string>
+    <string name="surgery_form_animal_id_label">Animal #: </string>
+    <string name="surgery_form_surgeon_label">Surgeon: </string>
+    <string name="surgery_form_procedure_label">Procedure: </string>
+    <string-array name="surgeon_array">
+        <item>Tom</item>
+        <item>Nathan</item>
+        <item>Courtney</item>
+        <item>tom</item>
+        <item>nathan</item>
+        <item>courtney</item>
+    </string-array>
 </resources>
