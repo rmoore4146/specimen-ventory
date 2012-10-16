@@ -13,5 +13,6 @@
     <modules>
         <module>../specimen-ventory-android</module>
         <module>../specimen-ventory-model</module>
+        <module>../specimen-ventory-war</module>
     </modules>
 </project>

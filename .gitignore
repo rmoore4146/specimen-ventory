@@ -44,3 +44,4 @@ target/
 libs/
 bin/
 gen/
+specimen-ventory-war/src/main/resources/specimen-ventory-private.properties
