@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import com.specimen.inventory.R;
 
-public class MenuActivity extends Activity {
-
+public class MenuActivity extends Activity
+{
     private class NewSurgeryButtonHandler implements View.OnClickListener {
         public void onClick(View v) {
             handleNewSurgeryButtonClick();

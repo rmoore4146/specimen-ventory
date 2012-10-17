@@ -16,7 +16,7 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/m/*</url-pattern>
+        <url-pattern>/specimen-ventory/*</url-pattern>
     </servlet-mapping>
 
     <listener>

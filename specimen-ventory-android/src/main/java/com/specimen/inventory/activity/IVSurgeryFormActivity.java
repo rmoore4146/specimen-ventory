@@ -3,6 +3,8 @@ package com.specimen.inventory.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import com.specimen.inventory.R;
 
 /**
@@ -15,7 +17,14 @@ public class IVSurgeryFormActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        //set view to head surgery screen
+        setContentView(R.layout.iv_surgery_form);
+
+        //bind list of surgeons to autocomplete field
+        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.generalSurgeonName);
+        String[] surgeons = getResources().getStringArray(R.array.surgeon_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, surgeons);
+        textView.setAdapter(adapter);
 
         Log.i("INFO", this.getClass().toString());
     }

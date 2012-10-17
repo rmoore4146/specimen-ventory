@@ -61,4 +61,91 @@
                   android:inputType="text"
                   android:text=""/>
     </TableRow>
+    <!--Anesthesia radio group-->
+    <TableRow android:padding="5dp">
+        <TextView android:text="@string/surgery_form_anesthesia_type_label"
+                  android:gravity="left"
+                  android:paddingRight="10dip"
+                  android:paddingTop="10dip"/>
+        <RadioGroup
+                android:layout_margin="10dip"
+                android:id="@+id/anesthesiaTypeRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <RadioButton
+                    android:paddingLeft="40dip"
+                    android:id="@+id/radioCHChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anesthesia_chloral_hydrate"
+                    android:checked="true" />
+            <RadioButton
+                    android:paddingLeft="40dip"
+                    android:id="@+id/radioIUChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anesthesia_isoflurane_usp" />
+            <RadioButton
+                    android:paddingLeft="40dip"
+                    android:id="@+id/radioKXChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anesthesia_ketamine_xylazine" />
+            <RadioButton
+                    android:paddingLeft="40dip"
+                    android:id="@+id/radioPChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/anesthesia_pentobarbital" />
+        </RadioGroup>
+    </TableRow>
+    <!--Anesthesia dosage input-->
+    <TableRow android:padding="5dp">
+        <TextView android:text="@string/surgery_form_anesthesia_dose_label"
+                  android:gravity="left"
+                  android:paddingRight="10dip"/>
+        <EditText android:id="@+id/generalAnesthesiaDosage"
+                  android:inputType="text"
+                  android:text=""/>
+    </TableRow>
+    <!--Analgesia type input (Radio group)-->
+    <TableRow android:padding="5dp">
+        <TextView android:text="@string/surgery_form_anesthesia_type_label"
+                  android:gravity="left"
+                  android:paddingRight="10dip"
+                  android:paddingTop="10dip"/>
+        <RadioGroup
+                android:layout_margin="10dip"
+                android:id="@+id/analgesiaTypeRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <RadioButton
+                    android:paddingLeft="40dip"
+                    android:id="@+id/radioKChoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/analgesia_ketoprofen"
+                    android:checked="true" />
+        </RadioGroup>
+    </TableRow>
+    <!--Analgesia dosage input-->
+    <TableRow android:padding="5dp">
+        <TextView android:text="@string/surgery_form_analgesia_dose_label"
+                  android:gravity="left"
+                  android:paddingRight="10dip"
+                  android:paddingTop="15dip"/>
+        <EditText android:id="@+id/generalAnalgesiaDosage"
+                  android:inputType="text"
+                  android:text=""/>
+    </TableRow>
+    <!--Free form text input-->
+    <TableRow android:padding="5dp">
+        <TextView android:text="@string/surgery_form_notes_label"
+                  android:gravity="left"
+                  android:paddingRight="10dip"
+                  android:paddingTop="15dip"/>
+        <EditText android:id="@+id/generalNotes"
+                  android:inputType="text"
+                  android:text=""/>
+    </TableRow>
 </TableLayout>
