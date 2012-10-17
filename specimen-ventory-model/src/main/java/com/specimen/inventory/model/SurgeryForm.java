@@ -25,7 +25,15 @@ public class SurgeryForm {
     private String secondDayAfterSurgeryDescription;
     private String thirdDayAfterSurgeryDescription;
     private String specimenWeight;
+    private String freeText;
 
+    public String getFreeText() {
+        return freeText;
+    }
+
+    public void setFreeText(String freeText) {
+        this.freeText = freeText;
+    }
 
     public String getSpecimenWeight() {
         return specimenWeight;
