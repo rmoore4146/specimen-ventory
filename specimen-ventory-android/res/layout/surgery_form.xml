@@ -13,9 +13,12 @@
         <TextView android:text="@string/surgery_form_date_label"
                   android:gravity="left"
                   android:paddingRight="10dip"/>
-        <EditText android:id="@+id/generalDate"
-                  android:inputType="date"
-                  android:text="" />
+        <Button android:text="@string/surgery_form_date_button"
+                android:id="@+id/generalDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+        </Button>
     </TableRow>
     <!--Time start input-->
     <TableRow android:padding="5dp">

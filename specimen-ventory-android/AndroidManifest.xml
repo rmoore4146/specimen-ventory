@@ -14,7 +14,7 @@
         <activity android:name=".activity.SurgerySelectActivity"
                   android:label="@string/app_name">
         </activity>
-        <activity android:name=".activity.HeadSurgeryFormActivity"
+        <activity android:name=".activity.SurgeryFormActivity"
                   android:label="@string/app_name"
                   android:windowSoftInputMode="stateHidden">
         </activity>

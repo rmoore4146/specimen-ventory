@@ -24,6 +24,7 @@
     <string name="surgery_form_anesthesia_dose_label">Anesthesia Dose: </string>
     <string name="surgery_form_analgesia_dose_label">Analgesia Dose: </string>
     <string name="surgery_form_notes_label">Notes: </string>
+    <string name="surgery_form_date_button">Choose Date</string>
 
     <string name="anesthesia_isoflurane_usp">Isoflurane, USP</string>
     <string name="anesthesia_ketamine_xylazine">Ketamine/Xylamine (80mg/8/mg/mL)</string>
