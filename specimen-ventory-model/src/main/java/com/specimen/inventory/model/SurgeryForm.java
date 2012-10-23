@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class SurgeryForm {
 
+    private long id;
     private Date surgeryDate;
     private String animalUUID;
     private String timeStart;
@@ -26,6 +27,14 @@ public class SurgeryForm {
     private String thirdDayAfterSurgeryDescription;
     private String specimenWeight;
     private String freeText;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFreeText() {
         return freeText;

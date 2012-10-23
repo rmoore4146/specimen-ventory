@@ -1,8 +1,9 @@
 package com.specimen.inventory.service.impl;
 
 
+import com.specimen.inventory.model.SurgeryForm;
+import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
-import com.specimen.inventory.service.producer.SurgeryService;
 
 /**
  * user: ryan.moore
@@ -10,7 +11,11 @@ import com.specimen.inventory.service.producer.SurgeryService;
  */
 public class SurgeryServiceImpl implements SurgeryService {
 
-    public Boolean createSurgeryEntry() throws SpecimenServiceException {
-        return true;
+    public SurgeryForm createSurgery(SurgeryForm surgery) throws SpecimenServiceException {
+        return null;  //TODO IMPLEMENT ME
+    }
+
+    public SurgeryForm fetchSurgery(long id) throws SpecimenServiceException {
+        return null;  //TODO IMPLEMENT ME
     }
 }

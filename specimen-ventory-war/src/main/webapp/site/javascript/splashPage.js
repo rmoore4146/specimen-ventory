@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     splash.initStyling();
     splash.initEvents();
 });
@@ -6,19 +6,19 @@ $(function() {
 
 var splash = {
 
-    initStyling: function() {
-        $(function() {
+    initStyling:function () {
+        $(function () {
             $("#continueButton").button();
         });
     },
 
-    initEvents: function() {
-        $('#bodyDiv').delegate(".continueButton", "click", function() {
+    initEvents:function () {
+        $('#bodyDiv').delegate(".continueButton", "click", function () {
             splash.continue();
         });
     },
 
-    continue: function() {
-        common.postToForm("helloWorld", {'name': "DOLPHIN"}, false);
+    continue:function () {
+        common.postToForm("helloWorld", {'name':"DOLPHIN"}, false);
     }
 };

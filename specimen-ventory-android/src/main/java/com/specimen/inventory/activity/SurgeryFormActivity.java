@@ -19,10 +19,11 @@ import com.specimen.inventory.exception.ActivityRuntimeException;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.HeadSurgeryForm;
+import com.specimen.inventory.model.SurgeryForm;
 import com.specimen.inventory.model.SurgeryType;
+import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 import com.specimen.inventory.service.impl.SurgeryServiceImpl;
-import com.specimen.inventory.service.producer.SurgeryService;
 import org.apache.commons.lang.StringUtils;
 
 import java.text.ParseException;
@@ -56,16 +57,16 @@ public class SurgeryFormActivity extends Activity {
 
     public void handleSubmitButtonClick() {
 
-        Boolean response;
+        SurgeryForm createdSurgery;
         try {
-            getSurgeryValuesFromScreen();
-            response = specimenService.createSurgeryEntry();
+            SurgeryForm form = getSurgeryValuesFromScreen();
+            createdSurgery = specimenService.createSurgery(form);
         } catch (SpecimenServiceException sse) {
             throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", sse);
         } catch (ParseException pe) {
             throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", pe);
         }
-        Log.i("specimenService.createSurgeryEntry(...)", response.toString());
+        Log.i("specimenService.createSurgeryEntry(...)", createdSurgery.toString());
         finish();
     }
 
@@ -97,9 +98,16 @@ public class SurgeryFormActivity extends Activity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //get surgery type from saved bundle
         String surgeryType = null;
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
@@ -107,13 +115,14 @@ public class SurgeryFormActivity extends Activity {
         }
 
         if(surgeryType!=null && surgeryType.equals(SurgeryType.HEAD_SURGERY.value())) {
+            //set view to Head surgery
             setContentView(R.layout.head_surgery_form);
         } else if(surgeryType!=null && surgeryType.equals(SurgeryType.IV_SURGERY.value())) {
+            //set view to IV surgery
             setContentView(R.layout.iv_surgery_form);
         } else {
             throw new ActivityRuntimeException("Bundle was bad");
         }
-        //set view to head surgery screen
 
         //bind list of surgeons to autocomplete field
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.generalSurgeonName);
@@ -139,7 +148,7 @@ public class SurgeryFormActivity extends Activity {
         Log.e("INFO", this.getClass().toString());
     }
 
-    private HeadSurgeryForm getSurgeryValuesFromScreen() throws ParseException {
+    private SurgeryForm getSurgeryValuesFromScreen() throws ParseException {
         EditText animalIdView = (EditText) findViewById(R.id.generalAnimalId);
         EditText startTimeView = (EditText) findViewById(R.id.generalStartTime);
         EditText endTimeView = (EditText) findViewById(R.id.generalEndTime);

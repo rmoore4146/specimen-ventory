@@ -9,22 +9,22 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Splash!!</title>
-    <link type="text/css" href="${contextPath}/site/css/smoothness/jquery-ui-1.8.21.custom.css" rel="Stylesheet" />
-    <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet" />
+    <link type="text/css" href="${contextPath}/site/css/smoothness/jquery-ui-1.8.21.custom.css" rel="Stylesheet"/>
+    <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet"/>
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/splashPage.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/common.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-ui-1.8.21.custom.min.js"></script>
 </head>
 <body>
-    <div id="bodyDiv">
-        <div id="pictureDiv">
-        </div>
-        <img src="site/img/baby_punch.jpg" alt="" name="baby_punch"id=""/>
-        </br>
-        <button type="button" id="continueButton" class="continueButton">
-            <span>Continue</span>
-        </button>
+<div id="bodyDiv">
+    <div id="pictureDiv">
     </div>
+    <img src="site/img/baby_punch.jpg" alt="" name="baby_punch" id=""/>
+    </br>
+    <button type="button" id="continueButton" class="continueButton">
+        <span>Continue</span>
+    </button>
+</div>
 </body>
 </html>

@@ -1,20 +1,20 @@
-$(function() {
+$(function () {
     helloWorld.initStyling();
 });
 
 
 var helloWorld = {
 
-    initStyling: function() {
+    initStyling:function () {
 
         $(function () {
             $("#datepicker").datepicker();
         });
 
-        $(function() {
+        $(function () {
             $("#accordion").accordion({
-                autoHeight: false,
-                navigation: true
+                autoHeight:false,
+                navigation:true
             });
         });
     }

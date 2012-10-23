@@ -14,6 +14,7 @@
         <module>../specimen-ventory-interface</module>
         <module>../specimen-ventory-model</module>
         <module>../specimen-ventory-android</module>
+        <module>../specimen-ventory-persistence</module>
         <module>../specimen-ventory-war</module>
     </modules>
 </project>

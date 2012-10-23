@@ -46,7 +46,6 @@ public class SurgerySelectActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.startActivity(new Intent(this, MenuActivity.class));
         finish();
     }
 
