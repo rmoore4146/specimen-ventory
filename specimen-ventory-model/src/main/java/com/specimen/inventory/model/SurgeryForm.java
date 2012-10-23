@@ -1,5 +1,6 @@
 package com.specimen.inventory.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * user: ryan.moore
  * date: 10/15/12
  */
-public class SurgeryForm {
+public class SurgeryForm implements Serializable {
 
     private long id;
     private Date surgeryDate;
