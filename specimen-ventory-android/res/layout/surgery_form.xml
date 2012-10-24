@@ -4,7 +4,8 @@
              android:id="@+id/generalSurgeryForm"
              android:layout_width="fill_parent"
              android:layout_height="wrap_content"
-             android:stretchColumns="1">
+             android:stretchColumns="1"
+             android:shrinkColumns="1">
     <TextView android:text="@string/surgery_information_header"
               android:gravity="center"
               android:textSize="20dip"/>
