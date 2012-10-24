@@ -1,8 +1,11 @@
 package com.specimen.inventory.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
@@ -37,6 +40,7 @@ import java.util.Calendar;
  */
 public class SurgeryFormActivity extends Activity {
 
+    ProgressDialog dialog;
     Button datePickerButton;
     AndroidHttpClient httpClient;
 
@@ -71,6 +75,8 @@ public class SurgeryFormActivity extends Activity {
             HttpContext localContext = new BasicHttpContext();
             NetworkComm task = new NetworkComm(httpClient, localContext, new SubmitListener(), 0, message, SURGERY_POST_URL, "");
             task.start();
+            this.dialog.setMessage("Creating Surgery");
+            this.dialog.show();
 
         } catch (ParseException pe) {
             throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", pe);
@@ -109,12 +115,14 @@ public class SurgeryFormActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(this, MenuActivity.class));
         finish();
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.dialog = new ProgressDialog(this);
         //get surgery type from saved bundle
         String surgeryType = null;
         Bundle extras = getIntent().getExtras();
@@ -199,7 +207,25 @@ public class SurgeryFormActivity extends Activity {
     }
 
     private void doResponseMethod(String response){
+        if (this.dialog.isShowing()) {
+            this.dialog.dismiss();
+        }
         this.httpClient.close();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Success!");
+        builder.setMessage("Your surgery has been created successfully");
+        builder.setNeutralButton("OK",(DialogInterface.OnClickListener) new OKButtonHandler());
+        builder.show();
+    }
+
+    private class OKButtonHandler implements DialogInterface.OnClickListener {
+        public void onClick(DialogInterface arg0, int arg1) {
+            handleOKButtonClick();
+        }
+    }
+
+    public void handleOKButtonClick() {
+        startActivity(new Intent(this, MenuActivity.class));
+        finish();
     }
 }
-
