@@ -16,7 +16,7 @@ public class SurgeryServiceImpl implements SurgeryService {
 
     @Override
     public SurgeryForm createSurgery(SurgeryForm surgery) throws SpecimenServiceException {
-        return null;  //TODO IMPLEMENT ME
+        return getHeadSurgeryFormMock();
     }
 
     @Override

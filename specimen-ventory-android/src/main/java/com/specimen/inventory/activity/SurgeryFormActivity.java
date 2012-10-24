@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import com.google.gson.Gson;
 import com.specimen.inventory.R;
 import com.specimen.inventory.exception.ActivityRuntimeException;
 import com.specimen.inventory.model.AnalgesiaType;
@@ -21,10 +23,9 @@ import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.HeadSurgeryForm;
 import com.specimen.inventory.model.SurgeryForm;
 import com.specimen.inventory.model.SurgeryType;
-import com.specimen.inventory.service.SurgeryService;
-import com.specimen.inventory.service.exception.SpecimenServiceException;
-import com.specimen.inventory.service.impl.SurgeryServiceImpl;
 import org.apache.commons.lang.StringUtils;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,11 +38,13 @@ import java.util.Calendar;
 public class SurgeryFormActivity extends Activity {
 
     Button datePickerButton;
+    AndroidHttpClient httpClient;
 
+    private static final String SURGERY_POST_URL = "http://192.168.0.108:8080/test/specimen-ventory/rest/surgery/head/";
     static final int DATEINIT_DIALOG = 0;
 
     SimpleDateFormat sdf = new SimpleDateFormat("m/d/yyyy");
-    SurgeryService specimenService = new SurgeryServiceImpl();
+//    SurgeryService specimenService = new SurgeryServiceImpl();
 
     private class SubmitButtonHandler implements View.OnClickListener {
         public void onClick(View v) {
@@ -60,14 +63,19 @@ public class SurgeryFormActivity extends Activity {
         SurgeryForm createdSurgery;
         try {
             SurgeryForm form = getSurgeryValuesFromScreen();
-            createdSurgery = specimenService.createSurgery(form);
-        } catch (SpecimenServiceException sse) {
-            throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", sse);
+//            createdSurgery = specimenService.createSurgery(form);
+
+            Gson g = new Gson();
+            String message = g.toJson(form);
+            this.httpClient = AndroidHttpClient.newInstance("");
+            HttpContext localContext = new BasicHttpContext();
+            NetworkComm task = new NetworkComm(httpClient, localContext, new SubmitListener(), 0, message, SURGERY_POST_URL, "");
+            task.start();
+
         } catch (ParseException pe) {
             throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", pe);
         }
-        Log.i("specimenService.createSurgeryEntry(...)", createdSurgery.toString());
-        finish();
+        Log.i("specimenService.createSurgeryEntry(...)", "blah made it here");
     }
 
     public void handleDateSet(int year, int month, int day) {
@@ -173,7 +181,7 @@ public class SurgeryFormActivity extends Activity {
         form.setProcedureName(procedureView.getText().toString());
         form.setSurgeon(surgeonView.getText().toString());
         String dateString = datePickerButton.getText().toString();
-        if(StringUtils.isNotEmpty(dateString) && !dateString.equals(R.string.surgery_form_date_button)) {
+        if(StringUtils.isNotEmpty(dateString) && !dateString.equals("Choose Date")) {
             form.setSurgeryDate(sdf.parse(dateString));
         }
         form.setTimeEnd(endTimeView.getText().toString());
@@ -181,6 +189,17 @@ public class SurgeryFormActivity extends Activity {
         form.setFreeText(freeTextView.getText().toString());
 
         return form;
+    }
+
+    public class SubmitListener implements NetworkComm.TaskResponseListener{
+        public void onTaskResponse(int type, String response, Object extra) {
+            doResponseMethod(response);
+            Log.e("blah", "here");
+        }
+    }
+
+    private void doResponseMethod(String response){
+        this.httpClient.close();
     }
 }
 

@@ -59,6 +59,7 @@ public class NetworkComm extends AsyncTask<String, Integer, String> {
     }
 
     public void start(){
+        Log.e("blah", message);
         this.execute(message);
     }
 
@@ -104,6 +105,7 @@ public class NetworkComm extends AsyncTask<String, Integer, String> {
 
     protected void onPostExecute(String result) {
          Log.d("task", "task finished");
+        hc.close();
          listener.onTaskResponse(reqType, result, extra);
      }
 
