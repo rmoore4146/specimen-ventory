@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <class name="com.specimen.inventory.model." table="surgery">
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+        <property name="surgeryDate" type="timestamp"/>
+        <property name="animalUUID" />
+        <property name="timeStart" />
+        <property name="timeEnd" />
+        <property name="surgeon" />
+        <property name="procedureName" />
+        <property name="anesthesiaType" />
+        <property name="anesthesiaDosage" />
+        <property name="analgesiaType" />
+        <property name="analgesiaDose" />
+        <property name="freeText" />
+
+        <!--postOperativeBehaviorList-->
+        <!--<property name="firstDayAfterSurgeryDescription" />-->
+        <!--<property name="secondDayAfterSurgeryDescription" />-->
+        <!--<property name="thirdDayAfterSurgeryDescription" />-->
+        <!--<property name="specimenWeight" />-->
+
+    </class>
+</hibernate-mapping>

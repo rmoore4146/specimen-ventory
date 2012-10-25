@@ -4,7 +4,7 @@ import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.HeadSurgeryForm;
 import com.specimen.inventory.model.SurgeryForm;
 import com.specimen.inventory.service.SurgeryService;
-import com.specimen.inventory.service.exception.SpecimenServiceException;
+import com.specimen.inventory.service.exception.SpecimenServiceException;\
 
 import java.util.Date;
 
@@ -13,6 +13,11 @@ import java.util.Date;
  * date: 10/22/12
  */
 public class SurgeryServiceImpl implements SurgeryService {
+
+
+
+    @Resource(name="sessionFactory")
+    private SessionFactory sessionFactory;
 
     @Override
     public SurgeryForm createSurgery(SurgeryForm surgery) throws SpecimenServiceException {

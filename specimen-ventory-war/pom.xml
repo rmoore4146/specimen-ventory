@@ -303,6 +303,8 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--Spring dependencies-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
