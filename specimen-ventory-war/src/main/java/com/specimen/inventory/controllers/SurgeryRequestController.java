@@ -1,7 +1,6 @@
 package com.specimen.inventory.controllers;
 
-import com.specimen.inventory.model.HeadSurgeryForm;
-import com.specimen.inventory.persistence.impl.SurgeryServiceImpl;
+import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 import org.apache.commons.lang.StringUtils;
@@ -34,16 +33,17 @@ public class SurgeryRequestController {
     @Autowired
     private View jsonView;
 
-    SurgeryService surgeryService = new SurgeryServiceImpl();
+    @Autowired
+    SurgeryService surgeryService;
 
     @RequestMapping(value = {"/rest/surgery/head/"}, method = {RequestMethod.POST})
-    public ModelAndView createHeadSurgery(@RequestBody HeadSurgeryForm surgeryForm, HttpServletResponse httpResponse, WebRequest request) {
+    public ModelAndView createHeadSurgery(@RequestBody HeadSurgery surgery, HttpServletResponse httpResponse, WebRequest request) {
 
-        HeadSurgeryForm createdSurgeryForm = null;
-        logger.info(surgeryForm.toString());
+        HeadSurgery createdSurgery = null;
+        logger.info(surgery.toString());
 
         try {
-            createdSurgeryForm = (HeadSurgeryForm) surgeryService.createSurgery(surgeryForm);
+            createdSurgery = (HeadSurgery) surgeryService.createSurgery(surgery);
         } catch (SpecimenServiceException sse) {
             logger.error(sse);
             return createErrorResponse("Failed createSurgery() operation");
@@ -53,18 +53,18 @@ public class SurgeryRequestController {
         httpResponse.setStatus(HttpStatus.CREATED.value());
 
         /* set location of created resource */
-        httpResponse.setHeader("Location", request.getContextPath() + "/rest/surgery/head/" + createdSurgeryForm.getId());
+        httpResponse.setHeader("Location", request.getContextPath() + "/rest/surgery/head/" + createdSurgery.getId());
 
         /**
          * Return the view
          */
-        return new ModelAndView(jsonView, DATA_FIELD, createdSurgeryForm);
+        return new ModelAndView(jsonView, DATA_FIELD, createdSurgery);
     }
 
     @RequestMapping(value = {"/rest/surgery/head/{surgeryId}"}, method = {RequestMethod.GET})
     public ModelAndView getHeadSurgery(@PathVariable("surgeryId") String surgeryId) {
 
-        HeadSurgeryForm getSurgeryForm = null;
+        HeadSurgery getSurgery = null;
         Long longSurgeryId = null;
         logger.info("getHeadSurgery() with parameter -" + surgeryId);
 
@@ -78,7 +78,7 @@ public class SurgeryRequestController {
         }
 
         try {
-            getSurgeryForm = (HeadSurgeryForm) surgeryService.fetchSurgery(longSurgeryId);
+            getSurgery = (HeadSurgery) surgeryService.getSurgery(longSurgeryId);
         } catch (SpecimenServiceException sse) {
             logger.error(sse);
             String message = "Error invoking getFund.";
@@ -87,7 +87,7 @@ public class SurgeryRequestController {
         /**
          * Return the view
          */
-        return new ModelAndView(jsonView, DATA_FIELD, getSurgeryForm);
+        return new ModelAndView(jsonView, DATA_FIELD, getSurgery);
     }
 
     private ModelAndView createErrorResponse(String message) {

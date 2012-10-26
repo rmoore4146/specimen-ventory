@@ -6,5 +6,5 @@ import java.io.Serializable;
  * user: ryan.moore
  * date: 10/15/12
  */
-public class IVSurgeryForm extends SurgeryForm implements Serializable {
+public class IVSurgery extends Surgery implements Serializable {
 }

@@ -4,10 +4,6 @@
                 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost/hibernate</property>
-    <property name="connection.username">root</property>
-    <property name="connection.password">"password</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
     <property name="show_sql">true</property>
@@ -21,6 +17,7 @@
 
     <!-- Mapping files will go here.... -->
     <!-- List of XML mapping files -->
-    <mapping resource="Employee.hbm.xml"/>
+    <mapping resource="orm/HeadSurgery.xml"/>
+    <mapping resource="orm/Specimen.xml"/>
 </session-factory>
 </hibernate-configuration>

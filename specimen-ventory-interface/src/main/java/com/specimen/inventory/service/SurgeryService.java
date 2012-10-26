@@ -1,6 +1,6 @@
 package com.specimen.inventory.service;
 
-import com.specimen.inventory.model.SurgeryForm;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 
 /**
@@ -9,7 +9,7 @@ import com.specimen.inventory.service.exception.SpecimenServiceException;
  */
 public interface SurgeryService {
 
-    SurgeryForm createSurgery(SurgeryForm surgery) throws SpecimenServiceException;
+    Surgery createSurgery(Surgery surgery) throws SpecimenServiceException;
 
-    SurgeryForm fetchSurgery(long id) throws SpecimenServiceException;
+    Surgery getSurgery(long id) throws SpecimenServiceException;
 }

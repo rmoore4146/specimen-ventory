@@ -1,12 +1,13 @@
 package com.specimen.inventory.persistence.impl;
 
-import com.specimen.inventory.model.AnalgesiaType;
-import com.specimen.inventory.model.HeadSurgeryForm;
-import com.specimen.inventory.model.SurgeryForm;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SurgeryService;
-import com.specimen.inventory.service.exception.SpecimenServiceException;\
-
-import java.util.Date;
+import com.specimen.inventory.service.exception.SpecimenServiceException;
+import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * user: ryan.moore
@@ -14,29 +15,30 @@ import java.util.Date;
  */
 public class SurgeryServiceImpl implements SurgeryService {
 
+    private static final Logger logger = Logger.getLogger(SurgeryServiceImpl.class);
 
-
-    @Resource(name="sessionFactory")
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public SurgeryForm createSurgery(SurgeryForm surgery) throws SpecimenServiceException {
-        return getHeadSurgeryFormMock();
+    public Surgery createSurgery(Surgery surgery) throws SpecimenServiceException {
+
+        logger.error("Inserting new Surgery object");
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(surgery);
+        transaction.commit();
+
+        return surgery;
     }
 
     @Override
-    public SurgeryForm fetchSurgery(long id) throws SpecimenServiceException {
-        return getHeadSurgeryFormMock();
-    }
+    public Surgery getSurgery(long id) throws SpecimenServiceException {
 
-    private HeadSurgeryForm getHeadSurgeryFormMock() {
-        HeadSurgeryForm form = new HeadSurgeryForm();
-        form.setFreeText("blah");
-        form.setId(123L);
-        form.setTimeEnd("4PM");
-        form.setAnalgesiaType(AnalgesiaType.KETOPROFEN);
-        form.setSurgeryDate(new Date());
-        form.setSurgeon("Courtney");
-        return form;
+        logger.error("Fetching new Surgery object by id:" + id);
+        Session session = sessionFactory.getCurrentSession();
+        Surgery surgery = (Surgery) session.get(Surgery.class, id);
+
+        return surgery;
     }
 }

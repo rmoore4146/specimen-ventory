@@ -17,27 +17,24 @@
             ignore-unresolvable="true"
             ignore-resource-not-found="true"
             location="classpath:specimen-centory-war.properties,classpath:specimen-centory-private.properties"/>
-    <!-- Enable annotation style of managing transactions -->
+
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <!-- Declare the Hibernate SessionFactory for retrieving Hibernate sessions -->
-    <!-- See http://static.springsource.org/spring/docs/3.0.x/javadoc-api/org/springframework/orm/hibernate3/annotation/AnnotationSessionFactoryBean.html -->
-    <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/SessionFactory.html -->
-    <!-- See http://docs.jboss.org/hibernate/stable/core/api/index.html?org/hibernate/Session.html -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
           p:dataSource-ref="dataSource"
-          p:configLocation="hibernate.cfg.xml"/>
+          p:configLocation="classpath:hibernate.cfg.xml"/>
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/TEST"/>
-        <property name="username" value="root"/>
-        <property name="password" value="password"/>
+        <property name="url" value="${hibernate.database}"/>
+        <property name="username" value="${hibernate.user}"/>
+        <property name="password" value="${hibernate.password}"/>
     </bean>
 
     <!-- Declare a transaction manager-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory" />
 
+    <bean id="surgeryService" class="com.specimen.inventory.persistence.impl.SurgeryServiceImpl"/>
 </beans>

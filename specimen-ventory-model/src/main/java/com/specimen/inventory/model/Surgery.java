@@ -9,7 +9,7 @@ import java.util.List;
  * user: ryan.moore
  * date: 10/15/12
  */
-public class SurgeryForm implements Serializable {
+public class Surgery implements Serializable {
 
     private long id;
     private Date surgeryDate;
@@ -28,6 +28,15 @@ public class SurgeryForm implements Serializable {
     private String thirdDayAfterSurgeryDescription;
     private String specimenWeight;
     private String freeText;
+    private Specimen specimen;
+
+    public Specimen getSpecimen() {
+        return specimen;
+    }
+
+    public void setSpecimen(Specimen specimen) {
+        this.specimen = specimen;
+    }
 
     public long getId() {
         return id;

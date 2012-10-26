@@ -23,8 +23,8 @@ import com.specimen.inventory.R;
 import com.specimen.inventory.exception.ActivityRuntimeException;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.HeadSurgeryForm;
-import com.specimen.inventory.model.SurgeryForm;
+import com.specimen.inventory.model.HeadSurgery;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.SurgeryType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.protocol.BasicHttpContext;
@@ -64,9 +64,9 @@ public class SurgeryFormActivity extends Activity {
 
     public void handleSubmitButtonClick() {
 
-        SurgeryForm createdSurgery;
+        Surgery createdSurgery;
         try {
-            SurgeryForm form = getSurgeryValuesFromScreen();
+            Surgery form = getSurgeryValuesFromScreen();
 //            createdSurgery = specimenService.createSurgery(form);
 
             Gson g = new Gson();
@@ -164,7 +164,7 @@ public class SurgeryFormActivity extends Activity {
         Log.e("INFO", this.getClass().toString());
     }
 
-    private SurgeryForm getSurgeryValuesFromScreen() throws ParseException {
+    private Surgery getSurgeryValuesFromScreen() throws ParseException {
         EditText animalIdView = (EditText) findViewById(R.id.generalAnimalId);
         EditText startTimeView = (EditText) findViewById(R.id.generalStartTime);
         EditText endTimeView = (EditText) findViewById(R.id.generalEndTime);
@@ -180,7 +180,7 @@ public class SurgeryFormActivity extends Activity {
         EditText analgesiaDosageView = (EditText) findViewById(R.id.generalAnalgesiaDosage);
         EditText freeTextView = (EditText) findViewById(R.id.generalNotes);
 
-        HeadSurgeryForm form = new HeadSurgeryForm();
+        HeadSurgery form = new HeadSurgery();
         form.setAnalgesiaDose(analgesiaDosageView.getText().toString());
         form.setAnalgesiaType(AnalgesiaType.fromValue(selectedAnalgesiaRadioButton.getText().toString()));
         form.setAnesthesiaDosage(anesthesiaDosageView.getText().toString());

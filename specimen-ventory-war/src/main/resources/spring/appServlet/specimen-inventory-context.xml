@@ -22,6 +22,8 @@
           @Controller, @Service etc.
     -->
     <context:component-scan base-package="com.specimen.inventory.controllers"/>
+    <import resource="classpath:META-INF/spring/specimen-ventory-persistence-context.xml"/>
+
     <!--<context:component-scan base-package="com.blog.samples.services" />-->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     <!--
