@@ -34,7 +34,7 @@ public class SurgeryRequestController {
     private View jsonView;
 
     @Autowired
-    SurgeryService surgeryService;
+    private SurgeryService surgeryService;
 
     @RequestMapping(value = {"/rest/surgery/head/"}, method = {RequestMethod.POST})
     public ModelAndView createHeadSurgery(@RequestBody HeadSurgery surgery, HttpServletResponse httpResponse, WebRequest request) {

@@ -1,7 +1,8 @@
 package com.specimen.inventory.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * user: ryan.moore
@@ -9,15 +10,18 @@ import java.util.List;
  */
 public class Specimen implements Serializable {
 
-    private List<Surgery> surgeryList;
+    private Set<Surgery> surgeryList;
     private Long id;
     private String animalUUID;
 
-    public List<Surgery> getSurgeryList() {
+    public Set<Surgery> getSurgeryList() {
+        if (surgeryList == null) {
+            surgeryList = new HashSet<Surgery>();
+        }
         return surgeryList;
     }
 
-    public void setSurgeryList(List<Surgery> surgeryList) {
+    public void setSurgeryList(Set<Surgery> surgeryList) {
         this.surgeryList = surgeryList;
     }
 

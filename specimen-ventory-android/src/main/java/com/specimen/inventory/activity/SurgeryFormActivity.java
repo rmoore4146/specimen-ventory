@@ -24,6 +24,7 @@ import com.specimen.inventory.exception.ActivityRuntimeException;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.HeadSurgery;
+import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.SurgeryType;
 import org.apache.commons.lang.StringUtils;
@@ -185,7 +186,9 @@ public class SurgeryFormActivity extends Activity {
         form.setAnalgesiaType(AnalgesiaType.fromValue(selectedAnalgesiaRadioButton.getText().toString()));
         form.setAnesthesiaDosage(anesthesiaDosageView.getText().toString());
         form.setAnesthesiaType(AnesthesiaType.fromValue(selectedAnesthesiaRadioButton.getText().toString()));
-        form.setAnimalUUID(animalIdView.getText().toString());
+        Specimen specimen = new Specimen();
+        specimen.setAnimalUUID(animalIdView.getText().toString());
+        form.setSpecimen(specimen);
         form.setProcedureName(procedureView.getText().toString());
         form.setSurgeon(surgeonView.getText().toString());
         String dateString = datePickerButton.getText().toString();

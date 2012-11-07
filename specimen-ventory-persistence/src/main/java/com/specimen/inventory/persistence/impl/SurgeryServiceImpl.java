@@ -23,7 +23,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     public Surgery createSurgery(Surgery surgery) throws SpecimenServiceException {
 
-        logger.error("Inserting new Surgery object");
+        logger.debug("Inserting new Surgery object");
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
         session.save(surgery);
@@ -35,7 +35,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     public Surgery getSurgery(long id) throws SpecimenServiceException {
 
-        logger.error("Fetching new Surgery object by id:" + id);
+        logger.debug("Fetching new Surgery object by id:" + id);
         Session session = sessionFactory.getCurrentSession();
         Surgery surgery = (Surgery) session.get(Surgery.class, id);
 

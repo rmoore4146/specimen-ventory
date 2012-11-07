@@ -3,10 +3,17 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-    <class name="com.specimen.inventory.model.Specimen" table="surgery">
-        <id name="id" column="id" type="java.lang.Long">
+    <class name="com.specimen.inventory.model.Specimen" table="SPECIMEN">
+        <id name="id" column="ID" type="java.lang.Long">
             <generator class="increment"/>
         </id>
         <property name="animalUUID" />
+        <set name="surgeryList" table="SURGERY"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ANIMALUUID" not-null="true" />
+            </key>
+            <one-to-many class="com.specimen.inventory.model.HeadSurgery" />
+        </set>
     </class>
 </hibernate-mapping>

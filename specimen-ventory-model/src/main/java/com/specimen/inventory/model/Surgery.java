@@ -13,7 +13,6 @@ public class Surgery implements Serializable {
 
     private long id;
     private Date surgeryDate;
-    private String animalUUID;
     private String timeStart;
     private String timeEnd;
     private String surgeon;
@@ -68,14 +67,6 @@ public class Surgery implements Serializable {
 
     public void setSurgeryDate(Date surgeryDate) {
         this.surgeryDate = surgeryDate;
-    }
-
-    public String getAnimalUUID() {
-        return animalUUID;
-    }
-
-    public void setAnimalUUID(String animalUUID) {
-        this.animalUUID = animalUUID;
     }
 
     public String getTimeStart() {

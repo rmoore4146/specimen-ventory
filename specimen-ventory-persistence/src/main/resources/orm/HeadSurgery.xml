@@ -3,12 +3,12 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-    <class name="com.specimen.inventory.model.HeadSurgery" table="surgery">
-        <id name="id" column="id" type="java.lang.Long">
+    <class name="com.specimen.inventory.model.HeadSurgery" table="SURGERY">
+        <id name="id" column="ID" type="java.lang.Long">
             <generator class="increment"/>
         </id>
+        <many-to-one name="specimen" class="com.specimen.inventory.model.Specimen" column="ANIMALUUID"/>
         <property name="surgeryDate" type="timestamp"/>
-        <property name="animalUUID" />
         <property name="timeStart" />
         <property name="timeEnd" />
         <property name="surgeon" />

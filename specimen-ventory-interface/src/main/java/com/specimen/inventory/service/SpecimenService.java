@@ -1,8 +1,9 @@
 package com.specimen.inventory.service;
 
 import com.specimen.inventory.model.Specimen;
+import com.specimen.inventory.service.exception.SpecimenServiceException;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * user: ryan.moore
@@ -10,7 +11,9 @@ import java.util.List;
  */
 public interface SpecimenService {
 
-    List<Specimen> getAllSpecimens();
+    Set<Specimen> getAllSpecimens();
 
-    Specimen getSpecimenById(Long id);
+    Specimen getSpecimenByUUID(String uuid);
+
+    Specimen createSpecimen(Specimen specimen) throws SpecimenServiceException;
 }
