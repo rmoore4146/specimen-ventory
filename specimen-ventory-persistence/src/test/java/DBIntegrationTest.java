@@ -46,8 +46,6 @@ public class DBIntegrationTest {
         Assert.assertNotNull(refetchedSpecimen);
     }
 
-
-
     private HeadSurgery getHeadSurgery() {
         HeadSurgery surgery = new HeadSurgery();
         surgery.setAnalgesiaDose("23G");
@@ -67,6 +65,4 @@ public class DBIntegrationTest {
         surgery.setTimeStart("1");
         return surgery;
     }
-
-
 }
