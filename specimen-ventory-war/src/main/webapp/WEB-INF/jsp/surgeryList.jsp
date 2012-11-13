@@ -43,47 +43,72 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${specimenSet}" var="specimen" varStatus="specimenIndex">
-                        <c:forEach items="${specimen.surgeryList}" var="surgery" begin="0" end="1">
+                        <c:forEach items="${specimen.surgeryList}" var="surgery" begin="0" end="0">
+                            <form class="someform">
                             <tr class="specimenRow">
                                 <td class="specimenAnimalIdTd">
-                                    <span id="specimenAnimalIdSpan-${specimenIndex.index}">${specimen.animalUUID}</span>
-                                    <input class="hidden" id="specimenAnimalIdInput-${specimenIndex.index}" value="${specimen.animalUUID}"/>
+                                    <span id="specimenAnimalIdSpan-${specimenIndex.index}" class="nonEdit">${specimen.animalUUID}</span>
+                                    <input class="edit hidden tiny" id="specimenAnimalIdInput-${specimenIndex.index}" value="${specimen.animalUUID}"/>
                                 </td>
                                 <td class="specimenProcedureTd">
-                                    <span id="specimenProcedureSpan-${specimenIndex.index}">${surgery.procedureName}</span>
-                                    <input class="hidden" id="specimenProcedureInput-${specimenIndex.index}" value="${surgery.procedureName}"/>
+                                    <span id="specimenProcedureSpan-${specimenIndex.index}" class="nonEdit">${surgery.procedureName}</span>
+                                    <input class="edit hidden small" id="specimenProcedureInput-${specimenIndex.index}" value="${surgery.procedureName}"/>
                                 </td>
                                 <td class="specimenNotesTd">
-                                    <span id="specimenNotesSpan-${specimenIndex.index}">${surgery.freeText}</span>
-                                    <input class="hidden" id="specimenNotesInput-${specimenIndex.index}" value="${surgery.freeText}"/>
+                                    <span id="specimenNotesSpan-${specimenIndex.index}" class="nonEdit">${surgery.freeText}</span>
+                                    <input class="edit hidden" id="specimenNotesInput-${specimenIndex.index}" value="${surgery.freeText}"/>
                                 </td>
-                                <td>
+                                <td class="specimenSurgeonTd">
+                                    <span id="specimenSurgeonSpan-${specimenIndex.index}" class="nonEdit">${surgery.surgeon}</span>
+                                    <input class="edit hidden mini" id="specimenSurgeonInput-${specimenIndex.index}" value="${surgery.surgeon}"/>
                                 </td>
-                                <td>
+                                <td class="specimenStartTd">
+                                    <span id="specimenStartSpan-${specimenIndex.index}" class="nonEdit">${surgery.timeStart}</span>
+                                    <input class="edit hidden tiny" id="specimenStartInput-${specimenIndex.index}" value="${surgery.timeStart}"/>
                                 </td>
-                                <td>
+                                <td class="specimenEndTd">
+                                    <span id="specimenEndSpan-${specimenIndex.index}" class="nonEdit">${surgery.timeEnd}</span>
+                                    <input class="edit hidden tiny" id="specimenEndInput-${specimenIndex.index}" value="${surgery.timeEnd}"/>
                                 </td>
-                                <td>
+                                <td class="specimenDateDt">
+                                    <fmt:formatDate value="${surgery.surgeryDate}" var="surgeryDate" pattern="mm-dd-yyyy"/>
+                                    <span id="specimenDateSpan-${specimenIndex.index}" class="nonEdit">${surgeryDate}</span>
+                                    <input class="edit hidden mini" id="specimenDateInput-${specimenIndex.index}" value="${surgeryDate}"/>
                                 </td>
-                                <td>
+                                <td class="specimenAnesthesiaTypeTd">
+                                    <span id="specimenAnesthesiaTypeSpan-${specimenIndex.index}" class="nonEdit">${surgery.anesthesiaType}</span>
+                                    <input class="edit hidden" id="specimenAnesthesiaTypeInput-${specimenIndex.index}" value="${surgery.anesthesiaType}"/>
                                 </td>
-                                <td>
+                                <td class="specimenAnesthesiaDoseTd">
+                                    <span id="specimenAnesthesiaDoseSpan-${specimenIndex.index}" class="nonEdit">${surgery.anesthesiaDosage}</span>
+                                    <input class="edit hidden mini" id="specimenAnesthesiaDoseInput-${specimenIndex.index}" value="${surgery.anesthesiaDosage}"/>
                                 </td>
-                                <td>
+                                <td class="specimenAnalgesiaTypeTd">
+                                    <span id="specimenAnalgesiaTypeSpan-${specimenIndex.index}" class="nonEdit">${surgery.analgesiaType}</span>
+                                    <input class="edit hidden" id="specimenAnalgesiaTypeInput-${specimenIndex.index}" value="${surgery.analgesiaType}"/>
                                 </td>
-                                <td>
+                                <td class="specimenAnalgesiaDoseTd">
+                                    <span id="specimenAnalgesiaDoseSpan-${specimenIndex.index}" class="nonEdit">${surgery.analgesiaDose}</span>
+                                    <input class="edit hidden mini" id="specimenAnalgesiaDoseInput-${specimenIndex.index}" value="${surgery.analgesiaDose}"/>
                                 </td>
                                 <td class="specimenButtonTd">
                                     <small>
-                                        <button id="specimenEditButton-${specimenIndex.index}" class="surgeryButton">
-                                            <span class="ui-icon ui-icon-pencil small"></span>
+                                        <button id="specimenSaveButton-${specimenIndex.index}" class="surgeryButton saveButton edit hidden">
+                                            <span class="ui-icon ui-icon-disk"></span>
                                         </button>
-                                        <button id="specimenDeleteButton-${specimenIndex.index}" class="surgeryButton">
-                                            <span class="ui-icon ui-icon-trash small"></span>
+                                        <button id="specimenEditButton-${specimenIndex.index}" class="surgeryButton editButton nonEdit">
+                                            <span class="ui-icon ui-icon-pencil"></span>
+                                        </button>
+                                        <button id="specimenDeleteButton-${specimenIndex.index}" class="surgeryButton deleteButton nonEdit">
+                                            <span class="ui-icon ui-icon-trash"></span>
+                                        </button>
+                                        <button id="specimenCancelButton-${specimenIndex.index}" class="surgeryButton cancelButton edit hidden">
+                                            <span class="ui-icon ui-icon-cancel"></span>
                                         </button>
                                     </small>
                                 </td>
                             </tr>
+                            </form>
                         </c:forEach>
                     </c:forEach>
                 </tbody>
