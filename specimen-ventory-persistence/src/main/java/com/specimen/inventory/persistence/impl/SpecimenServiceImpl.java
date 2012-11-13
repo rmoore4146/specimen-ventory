@@ -4,11 +4,13 @@ import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -16,6 +18,8 @@ import java.util.Set;
  * user: ryan.moore
  * date: 11/7/12
  */
+@Service("specimenService")
+@Transactional("transactionManager")
 public class SpecimenServiceImpl implements SpecimenService {
 
     private static final Logger logger = Logger.getLogger(SpecimenServiceImpl.class);
@@ -28,11 +32,13 @@ public class SpecimenServiceImpl implements SpecimenService {
         String queryStr = "SELECT s FROM Specimen as s";
         logger.debug("Fetching all Specimen rows");
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
         Query query = session.createQuery(queryStr);
         Set<Specimen> resultSet = (Set<Specimen>) query.list();
-        transaction.commit();
 
+        //Do
+        for(Specimen specimen:resultSet) {
+            Hibernate.initialize(specimen.getSurgeryList());
+        }
         return resultSet;
     }
 
@@ -42,11 +48,9 @@ public class SpecimenServiceImpl implements SpecimenService {
         String queryStr = "SELECT s FROM Specimen as s WHERE s.animalUUID = :animalId";
         logger.debug("Fetching Specimen object by uuid:" + uuid);
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
         Query query = session.createQuery(queryStr);
         query.setParameter("animalId", uuid);
         Specimen specimen = (Specimen) query.uniqueResult();
-        transaction.commit();
 
         return specimen;
     }
@@ -56,9 +60,7 @@ public class SpecimenServiceImpl implements SpecimenService {
 
         logger.debug("Inserting new Specimen object");
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
         session.save(specimen);
-        transaction.commit();
 
         return specimen;
     }

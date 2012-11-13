@@ -46,6 +46,27 @@ public class DBIntegrationTest {
         Assert.assertNotNull(refetchedSpecimen);
     }
 
+    @Test
+    public void testFetchSpecimen() throws SpecimenServiceException {
+
+        Specimen refetchedSpecimen = specimenService.getSpecimenByUUID(getHeadSurgery().getSpecimen().getAnimalUUID());
+        Assert.assertNotNull(refetchedSpecimen);
+    }
+
+    @Test
+    public void testFetchSpecimenDoesntExist() throws SpecimenServiceException {
+
+        Specimen specimen = specimenService.getSpecimenByUUID("a uuid that doesnt exist");
+        Assert.assertNull(specimen);
+    }
+
+    @Test
+    public void testPersistFetchSurgeryDoesntExist() throws SpecimenServiceException {
+
+        Specimen specimen = specimenService.getSpecimenByUUID("a uuid that doesnt exist");
+        Assert.assertNull(specimen);
+    }
+
     private HeadSurgery getHeadSurgery() {
         HeadSurgery surgery = new HeadSurgery();
         surgery.setAnalgesiaDose("23G");
@@ -53,10 +74,10 @@ public class DBIntegrationTest {
         surgery.setAnesthesiaDosage("1234G");
         surgery.setAnesthesiaType(AnesthesiaType.CHLORAL_HYDRATE);
         surgery.setFreeText("blah blah blah");
-        surgery.setProcedureName("Head surgery");
+        surgery.setProcedureName("Head surgery 7");
         Specimen specimen = new Specimen();
         specimen.getSurgeryList().add(surgery);
-        specimen.setAnimalUUID("R104");
+        specimen.setAnimalUUID("R200");
         surgery.setSpecimen(specimen);
         surgery.setSpecimenWeight("14G");
         surgery.setSurgeon("Courtney2");

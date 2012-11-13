@@ -9,7 +9,7 @@
         </id>
         <property name="animalUUID" />
         <set name="surgeryList" table="SURGERY"
-             inverse="true" lazy="true" fetch="select">
+             inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="ANIMALUUID" not-null="true" />
             </key>

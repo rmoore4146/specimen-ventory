@@ -45,7 +45,7 @@ public class SurgeryFormActivity extends Activity {
     Button datePickerButton;
     AndroidHttpClient httpClient;
 
-    private static final String SURGERY_POST_URL = "http://192.168.0.108:8080/test/specimen-ventory/rest/surgery/head/";
+    private static final String SURGERY_POST_URL = "http://192.168.0.107:8080/test/specimen-ventory/rest/surgery/head/";
     static final int DATEINIT_DIALOG = 0;
 
     SimpleDateFormat sdf = new SimpleDateFormat("m/d/yyyy");
