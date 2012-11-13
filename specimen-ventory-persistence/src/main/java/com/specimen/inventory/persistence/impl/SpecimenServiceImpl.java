@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -33,9 +34,8 @@ public class SpecimenServiceImpl implements SpecimenService {
         logger.debug("Fetching all Specimen rows");
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
-        Set<Specimen> resultSet = (Set<Specimen>) query.list();
+        Set<Specimen> resultSet = new HashSet<Specimen>(query.list());
 
-        //Do
         for(Specimen specimen:resultSet) {
             Hibernate.initialize(specimen.getSurgeryList());
         }
