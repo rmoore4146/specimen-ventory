@@ -6,6 +6,7 @@ import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
+import com.specimen.inventory.service.exception.SurgeryServiceException;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ public class DBIntegrationTest {
     SpecimenService specimenService;
 
     @Test
-    public void testCreateSurgery() throws SpecimenServiceException {
+    public void testCreateSurgery() throws SurgeryServiceException {
 
         Surgery surgery = surgeryService.createSurgery(getHeadSurgery());
         Assert.assertNotNull(surgery);

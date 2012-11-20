@@ -34,6 +34,10 @@ var surgeryList = {
 
         //zero config jquery buttons
         $('.surgeryButton').button();
+
+        //jquery datepicker init
+        $('[id^="specimenDateInput"]').datepicker();
+
     },
 
 
@@ -63,6 +67,35 @@ var surgeryList = {
 
 function saveSurgeryRow(caller) {
 
+    var $callerRow = $(caller);
+    var $currentTr = $callerRow.closest('tr');
+    var even = $currentTr.hasClass('even');
+    var $formInputs = $currentTr.find('input');
+    var $form = $('#updateSurgeryPrototype').clone();
+    $form.html($formInputs);
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "updateSurgery",
+        type: "POST",
+        data: data,
+        dataType: 'html',
+        success: function(result) {
+            if (result.indexOf('error') == -1) {
+                var $resultHtml = $(result);
+                $currentTr.replaceWith($resultHtml);
+                updateRowStyling($resultHtml, even);
+            }
+            else {
+                alert(result);
+            }
+        },
+        error: function(result) {
+            alert("An undisclosed error has occurred. Update failed.");
+        }
+    });
+
+
 }
 
 function editSurgeryRow(caller) {
@@ -74,6 +107,17 @@ function cancelSurgeryRow(caller) {
 }
 
 function deleteSurgeryRow(caller) {
+
+}
+
+function updateRowStyling(row, isEven) {
+    row.find('.surgeryButton').button();
+    row.find('[id^="specimenDateInput"]').datepicker();
+    if(isEven) {
+        row.addClass('even');
+    } else {
+        row.addClass('odd');
+    }
 
 }
 

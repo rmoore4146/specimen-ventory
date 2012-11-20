@@ -7,7 +7,7 @@
         <id name="id" column="ID" type="java.lang.Long">
             <generator class="increment"/>
         </id>
-        <many-to-one name="specimen" class="com.specimen.inventory.model.Specimen" column="ANIMALUUID"/>
+        <many-to-one name="specimen" class="com.specimen.inventory.model.Specimen" column="ANIMALUUID" lazy="false"/>
         <property name="surgeryDate" type="timestamp"/>
         <property name="timeStart" />
         <property name="timeEnd" />

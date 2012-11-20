@@ -2,7 +2,7 @@ package com.specimen.inventory.controllers;
 
 import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.service.SurgeryService;
-import com.specimen.inventory.service.exception.SpecimenServiceException;
+import com.specimen.inventory.service.exception.SurgeryServiceException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class SurgeryRequestController {
 
         try {
             createdSurgery = (HeadSurgery) surgeryService.createSurgery(surgery);
-        } catch (SpecimenServiceException sse) {
+        } catch (SurgeryServiceException sse) {
             logger.error(sse);
             return createErrorResponse("Failed createSurgery() operation");
         }
@@ -79,7 +79,7 @@ public class SurgeryRequestController {
 
         try {
             getSurgery = (HeadSurgery) surgeryService.getSurgery(longSurgeryId);
-        } catch (SpecimenServiceException sse) {
+        } catch (SurgeryServiceException sse) {
             logger.error(sse);
             String message = "Error invoking getFund.";
             return createErrorResponse(message);
