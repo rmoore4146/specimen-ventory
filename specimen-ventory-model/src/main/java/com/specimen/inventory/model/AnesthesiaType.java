@@ -11,19 +11,19 @@ public enum AnesthesiaType {
     CHLORAL_HYDRATE("Chloral Hydrate (7%)"),
     PENTOBARBITAL("Pentobarbital (50mg/mL)");
 
-    private final String value;
+    private final String medicine;
 
     AnesthesiaType(String v) {
-        value = v;
+        medicine = v;
     }
 
-    public String value() {
-        return value;
+    public String getMedicine() {
+        return medicine;
     }
 
     public static AnesthesiaType fromValue(String v) {
         for (AnesthesiaType c: AnesthesiaType.values()) {
-            if (c.value.equals(v)) {
+            if (c.medicine.equals(v)) {
                 return c;
             }
         }

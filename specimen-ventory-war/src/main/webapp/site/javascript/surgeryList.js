@@ -70,7 +70,7 @@ function saveSurgeryRow(caller) {
     var $callerRow = $(caller);
     var $currentTr = $callerRow.closest('tr');
     var even = $currentTr.hasClass('even');
-    var $formInputs = $currentTr.find('input');
+    var $formInputs = $currentTr.find('input, select');
     var $form = $('#updateSurgeryPrototype').clone();
     $form.html($formInputs);
     var data = $form.serialize();

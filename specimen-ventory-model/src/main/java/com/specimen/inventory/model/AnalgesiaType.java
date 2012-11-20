@@ -8,19 +8,19 @@ public enum AnalgesiaType {
 
     KETOPROFEN("Ketoprofen (5mg/mL)");
 
-    private final String value;
+    private final String medicine;
 
     AnalgesiaType(String v) {
-        value = v;
+        medicine = v;
     }
 
-    public String value() {
-        return value;
+    public String getMedicine() {
+        return medicine;
     }
 
     public static AnalgesiaType fromValue(String v) {
         for (AnalgesiaType c: AnalgesiaType.values()) {
-            if (c.value.equals(v)) {
+            if (c.medicine.equals(v)) {
                 return c;
             }
         }

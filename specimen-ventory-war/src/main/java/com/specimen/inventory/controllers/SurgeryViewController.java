@@ -1,5 +1,7 @@
 package com.specimen.inventory.controllers;
 
+import com.specimen.inventory.model.AnalgesiaType;
+import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
@@ -51,6 +53,8 @@ public class SurgeryViewController {
 
         Set<Surgery> surgerySet = surgeryService.listSurgeries();
 
+        map.addAttribute("analgesiaTypes", AnalgesiaType.values());
+        map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
         map.addAttribute("surgerySet", surgerySet);
         return "surgeryList";
     }
@@ -64,6 +68,8 @@ public class SurgeryViewController {
         try{
             Surgery updatedSurgery = surgeryService.updateSurgery(surgery);
             modelAndView.addObject("surgery", updatedSurgery);
+            modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
+            modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
         } catch (SurgeryServiceException sse) {
             logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
             modelAndView.setViewName("error");

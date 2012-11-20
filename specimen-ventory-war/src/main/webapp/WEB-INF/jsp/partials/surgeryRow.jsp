@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="com.specimen.inventory.model.AnesthesiaType" %>
+<%@ page import="com.specimen.inventory.model.AnalgesiaType" %>
+<%@ page import="com.specimen.inventory.model.HeadSurgery" %>
+
 
 <tr class="specimenRow">
     <td class="specimenAnimalIdTd">
@@ -35,16 +40,24 @@
         <input class="edit hidden mini" name="surgeryDate" id="specimenDateInput-${surgery.id}" value="${surgeryDate}"/>
     </td>
     <td class="specimenAnesthesiaTypeTd">
-        <span id="specimenAnesthesiaTypeSpan-${surgery.id}" class="nonEdit">${surgery.anesthesiaType}</span>
-        <input class="edit hidden" name="anesthesiaType" id="specimenAnesthesiaTypeInput-${surgery.id}" value="${surgery.anesthesiaType}"/>
+        <span id="specimenAnesthesiaTypeSpan-${surgery.id}" class="nonEdit">${surgery.anesthesiaType.medicine}</span>
+        <select title="anesthesiaTypeSelect-${surgery.id}" id="analgesiaTypeSelect-${surgery.id}" name="anesthesiaType" class="small hidden edit">
+            <c:forEach items="${anesthesiaTypes}" var="value">
+                <option value="${value}" <c:if test="${value == surgery.anesthesiaType}">selected="selected"</c:if>>${value.medicine}</option>
+            </c:forEach>
+        </select>
     </td>
     <td class="specimenAnesthesiaDoseTd">
         <span id="specimenAnesthesiaDoseSpan-${surgery.id}" class="nonEdit">${surgery.anesthesiaDosage}</span>
         <input class="edit hidden mini" name="anesthesiaDosage" id="specimenAnesthesiaDoseInput-${surgery.id}" value="${surgery.anesthesiaDosage}"/>
     </td>
     <td class="specimenAnalgesiaTypeTd">
-        <span id="specimenAnalgesiaTypeSpan-${surgery.id}" class="nonEdit">${surgery.analgesiaType}</span>
-        <input class="edit hidden" name="analgesiaType" id="specimenAnalgesiaTypeInput-${surgery.id}" value="${surgery.analgesiaType}"/>
+        <span id="specimenAnalgesiaTypeSpan-${surgery.id}" class="nonEdit">${surgery.analgesiaType.medicine}</span>
+        <select title="analgesiaTypeSelect-${surgery.id}" id="analgesiaTypeSelect-${surgery.id}" name="analgesiaType" class="small hidden edit">
+            <c:forEach items="${analgesiaTypes}" var="value">
+                <option value="${value}" <c:if test="${value == surgery.analgesiaType}">selected="selected"</c:if>>${value.medicine}</option>
+            </c:forEach>
+        </select>
     </td>
     <td class="specimenAnalgesiaDoseTd">
         <span id="specimenAnalgesiaDoseSpan-${surgery.id}" class="nonEdit">${surgery.analgesiaDose}</span>
