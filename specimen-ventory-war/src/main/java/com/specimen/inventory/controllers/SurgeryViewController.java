@@ -78,4 +78,22 @@ public class SurgeryViewController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/deleteSurgery", method = RequestMethod.POST)
+    public ModelAndView deleteSurgery(@ModelAttribute HeadSurgery surgery) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("partials/surgeryRow");
+
+        try{
+            surgeryService.deleteSurgery(surgery.getId());
+            modelAndView.addObject("surgery", surgery);
+        } catch (SurgeryServiceException sse) {
+            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
+            modelAndView.setViewName("error");
+            modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
+        }
+
+        return modelAndView;
+    }
 }

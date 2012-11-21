@@ -22,4 +22,6 @@ public interface SurgeryService {
     Set<Surgery> listSurgeryBySpecimenUUID(String uuid);
 
     Surgery updateSurgery(Surgery surgery) throws SurgeryServiceException;
+
+    void deleteSurgery(Long surgeryId) throws SurgeryServiceException;
 }

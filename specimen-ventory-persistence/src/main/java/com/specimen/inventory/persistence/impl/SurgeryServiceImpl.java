@@ -1,5 +1,6 @@
 package com.specimen.inventory.persistence.impl;
 
+import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
@@ -7,6 +8,7 @@ import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,7 +64,7 @@ public class SurgeryServiceImpl implements SurgeryService {
 
         logger.debug("Fetching new Surgery object by id:" + id);
         Session session = sessionFactory.getCurrentSession();
-        Surgery surgery = (Surgery) session.get(Surgery.class, id);
+        Surgery surgery = (Surgery) session.get(HeadSurgery.class, id);
 
         return surgery;
     }
@@ -127,5 +129,23 @@ public class SurgeryServiceImpl implements SurgeryService {
         Surgery mergedSurgery = (Surgery) session.merge(surgery);
 
         return surgery;
+    }
+
+    @Override
+    public void deleteSurgery(Long surgeryId) throws SurgeryServiceException {
+
+        Surgery surgery = getSurgery(surgeryId);
+
+        //get session
+        Session session = sessionFactory.getCurrentSession();
+
+        try {
+            //attempt a delete, throw exception if fails
+            session.delete(surgery);
+        } catch (HibernateException he) {
+            String message = "An error occurred while deleting surgery with id - " + surgeryId;
+            logger.error(message, he);
+            throw new SurgeryServiceException(message, he);
+        }
     }
 }
