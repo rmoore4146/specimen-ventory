@@ -28,9 +28,9 @@ import java.util.Set;
  * date: 11/12/12
  */
 @Controller
-public class SurgeryViewController {
+public class SurgeryListViewController {
 
-    private static final Logger logger = Logger.getLogger(SurgeryViewController.class);
+    private static final Logger logger = Logger.getLogger(SurgeryListViewController.class);
     private static final String SURGERY_UPDATE_MSG = "An error occurred while updating surgery.";
 
     @Autowired

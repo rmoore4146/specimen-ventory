@@ -6,22 +6,27 @@ package com.specimen.inventory.model;
  */
 public enum SurgeryType {
 
-    HEAD_SURGERY("Head Surgery"),
+    VIRUS_SURGERY("Virus Surgery"),
+    LESION_SURGERY("Lesion Surgery"),
+    ELECTRODE_SURGERY("Electrode Surgery"),
+    OPTRODE_SURGERY("Optrode Surgery"),
+    TRACE_SURGERY("Tracer Surgery"),
+    CANNULA_SURGERY("Cannula Surgery"),
     IV_SURGERY("IV Surgery");
 
-    private final String value;
+    private final String surgeryType;
 
     SurgeryType(String v) {
-        value = v;
+        surgeryType = v;
     }
 
-    public String value() {
-        return value;
+    public String getSurgeryType() {
+        return surgeryType;
     }
 
     public static SurgeryType fromValue(String v) {
         for (SurgeryType c: SurgeryType.values()) {
-            if (c.value.equals(v)) {
+            if (c.surgeryType.equals(v)) {
                 return c;
             }
         }

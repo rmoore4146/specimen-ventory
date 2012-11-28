@@ -28,6 +28,15 @@ public class Surgery implements Serializable {
     private String specimenWeight;
     private String freeText;
     private Specimen specimen;
+    private SurgeryType surgeryType;
+
+    public SurgeryType getSurgeryType() {
+        return surgeryType;
+    }
+
+    public void setSurgeryType(SurgeryType surgeryType) {
+        this.surgeryType = surgeryType;
+    }
 
     public Specimen getSpecimen() {
         return specimen;
