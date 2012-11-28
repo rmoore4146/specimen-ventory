@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.specimen.inventory.model.AnesthesiaType" %>
@@ -15,7 +16,9 @@
         <input class="hidden" name="id" id="specimenSurgeryIdInput-${surgery.id}" value="${surgery.id}"/>
     </td>
     <td class="specimenProcedureTd">
-        <span id="specimenProcedureSpan-${surgery.id}" class="nonEdit">${surgery.procedureName}</span>
+        <spring:url var="detailsUrl" value='/specimen-ventory/surgeryDetails/${surgery.id}'/>
+        <a id="specimenProcedureLink-${surgery.id}" class="nonEdit" href="${detailsUrl}">${surgery.procedureName}</a>
+        <%--<span id="specimenProcedureSpan-${surgery.id}" class="nonEdit">${surgery.procedureName}</span>--%>
         <input class="edit hidden small" name="procedureName" id="specimenProcedureInput-${surgery.id}" value="${surgery.procedureName}"/>
     </td>
     <td class="specimenNotesTd">

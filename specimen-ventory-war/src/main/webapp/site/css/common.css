@@ -21,3 +21,6 @@ body {
 .input-large,input.large,textarea.large,select.large{width:210px;}
 .input-xlarge,input.xlarge,textarea.xlarge,select.xlarge{width:270px;}
 .input-xxlarge,input.xxlarge,textarea.xxlarge,select.xxlarge{width:530px;}
+
+.col2 li{display:inline-block;float:left;width:49%;}
+.col2 select{width:auto;}
