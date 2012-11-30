@@ -1,9 +1,32 @@
-.pageContainer {
+body h1 {
+    text-align:left;
+    width:950px;
+    height:35px;
+    margin: 5px auto;
+}
+
+#pageContainer {
+    border:1.5px solid #000000;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
+    margin-top:5px;
+    width: 950px;
+    height: 425px;
     padding:15px;
 }
+
+#pageContainer form {
+    float:left;
+    width:690px;
+    height: 425px;
+}
+
+#pageContainer .ratImageContainer{
+    float:right;
+    width:260px;
+    height: 395px;
+}
+
 .surgeryContainer label {
     text-align: left;
     font-size:14px;
@@ -23,4 +46,5 @@
 
 .buttonContainer {
     float:right;
+    margin-right: -12px;
 }

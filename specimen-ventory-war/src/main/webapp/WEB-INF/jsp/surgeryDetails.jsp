@@ -21,10 +21,11 @@
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-ui-1.9.1.custom.min.js"></script>
 </head>
 <body>
-    <div id="pageContainer">
+<h1 title="Surgery Log">${surgery.surgeryType} - ${surgery.procedureName}</h1>
+<div id="pageContainer">
         <form id="surgeryForm">
             <div class="surgeryContainer">
-            <h1 title="Surgery Log">${surgery.surgeryType} - ${surgery.procedureName}</h1>
+            <%--<h1 title="Surgery Log">${surgery.surgeryType} - ${surgery.procedureName}</h1>--%>
                 <ul class="formFields col2">
                     <li class="specimenAnimalIdLi">
                         <label class="surgeryDateLabel">Specimen UUID: </label>
@@ -95,6 +96,9 @@
             </div>
         </form>
         <br>
+        <div class="ratImageContainer">
+            <img src="${contextPath}/site/img/cartoon_rat.gif" alt="rat picture"/>
+        </div>
         <div class="buttonContainer">
             <small>
                 <button id="specimenSaveButton" class="surgeryButton saveButton edit hidden">

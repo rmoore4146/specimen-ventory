@@ -1,5 +1,7 @@
 package com.specimen.inventory.controllers;
 
+import com.specimen.inventory.model.AnalgesiaType;
+import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
@@ -58,12 +60,13 @@ public class SurgeryDetailsViewController {
                 map.addAttribute("errorMessage", SURGERY_GET_ERROR_MSG);
                 return "error";
             }
-
+            map.addAttribute("analgesiaTypes", AnalgesiaType.values());
+            map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
             map.addAttribute("surgery", surgery);
             return "surgeryDetails";
 
         } else {
-
+            logger.error("Surgery ID passed to Surgery Details page was null");
             map.addAttribute("errorMessage", SURGERY_GET_ERROR_MSG);
             return "error";
         }
