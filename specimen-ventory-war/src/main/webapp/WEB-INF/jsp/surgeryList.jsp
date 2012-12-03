@@ -43,7 +43,7 @@
                 </thead>
                 <tbody>
                     <c:forEach items="${surgerySet}" var="surgery">
-                            <%@include file="partials/surgeryRow.jsp"%>
+                        <%@include file="partials/surgeryRow.jsp"%>
                     </c:forEach>
                 </tbody>
             </table>

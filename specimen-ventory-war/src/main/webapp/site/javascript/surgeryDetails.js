@@ -21,71 +21,60 @@ var surgeryDetails = {
 
         //Save button delegate
         $("#pageContainer").delegate(".saveButton", "click", function() {
-            saveSurgery(this);
+            saveSurgery();
         });
 
         //Edit button delegate
         $("#pageContainer").delegate(".editButton", "click", function() {
-            editSurgery(this);
+            editSurgery();
         });
 
         //Delete button delegate
         $("#pageContainer").delegate(".deleteButton", "click", function() {
-            deleteSurgery(this);
+            deleteSurgery();
         });
 
         //Cancel button delegate
         $("#pageContainer").delegate(".cancelButton", "click", function() {
-            cancelSurgery(this);
+            cancelSurgery();
         });
     }
 };
 
-function saveSurgery(caller) {
+function saveSurgery() {
 
-    //TODO IMPLEMENT LATER
+    var data = $('#surgeryForm').serialize();
 
-//    var $callerRow = $(caller);
-//    var $currentTr = $callerRow.closest('tr');
-//    var even = $currentTr.hasClass('even');
-//    var $formInputs = $currentTr.find('input, select');
-//    var $form = $('#updateSurgeryPrototype').clone();
-//    $form.html($formInputs);
-//    var data = $form.serialize();
-//
-//    $.ajax({
-//        url: "updateSurgery",
-//        type: "POST",
-//        data: data,
-//        dataType: 'html',
-//        success: function(result) {
-//            if (result.indexOf('error') == -1) {
-//                var $resultHtml = $(result);
-//                var $dataTable = getDataTable();
-////                var position = $dataTable.fnGetPosition($currentTr[0]);
-////                $dataTable.fnUpdate(position);
-//                $currentTr.replaceWith($resultHtml);
-//                updateRowStyling($resultHtml, even);
-//            }
-//            else {
-//                alert(result);
-//            }
-//        },
-//        error: function(result) {
-//            alert("An undisclosed error has occurred. Update failed.");
-//        }
-//    });
+    $.ajax({
+        url: "updateSurgeryDetails",
+        type: "POST",
+        data: data,
+        dataType: 'html',
+        success: function(result) {
+            if (result.indexOf('error') == -1) {
+                var $resultHtml = $(result);
+                $('#pageContainer').find('ul').replaceWith($resultHtml);
+                surgeryDetails.initStyling();
+            }
+            else {
+                alert(result);
+            }
+        },
+        error: function(result) {
+            alert("An undisclosed error has occurred. Update failed.");
+        }
+    });
 }
 
-function editSurgery(caller) {
-    toggleEditSurgery(caller.id);
+function editSurgery() {
+    toggleEditSurgery();
 }
 
-function cancelSurgery(caller) {
-    toggleEditSurgery(caller.id);
+function cancelSurgery() {
+    toggleEditSurgery();
 }
 
-function deleteSurgery(caller) {
+function deleteSurgery() {
 
     //TODO IMPLEMENT ME
 //    var $callerRow = $(caller);
