@@ -131,10 +131,10 @@ public class SurgeryFormActivity extends Activity {
             surgeryType = extras.getString("surgeryType");
         }
 
-        if(surgeryType!=null && surgeryType.equals(SurgeryType.HEAD_SURGERY.value())) {
+        if(surgeryType!=null && surgeryType.equals(SurgeryType.HEAD_SURGERY.getSurgeryType())) {
             //set view to Head surgery
             setContentView(R.layout.head_surgery_form);
-        } else if(surgeryType!=null && surgeryType.equals(SurgeryType.IV_SURGERY.value())) {
+        } else if(surgeryType!=null && surgeryType.equals(SurgeryType.IV_SURGERY.getSurgeryType())) {
             //set view to IV surgery
             setContentView(R.layout.iv_surgery_form);
         } else {

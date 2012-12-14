@@ -7,6 +7,7 @@ package com.specimen.inventory.model;
 public enum SurgeryType {
 
     VIRUS_SURGERY("Virus Surgery"),
+    HEAD_SURGERY("Head Surgery"),
     LESION_SURGERY("Lesion Surgery"),
     ELECTRODE_SURGERY("Electrode Surgery"),
     OPTRODE_SURGERY("Optrode Surgery"),

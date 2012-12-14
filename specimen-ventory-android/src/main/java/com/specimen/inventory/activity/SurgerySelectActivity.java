@@ -58,12 +58,12 @@ public class SurgerySelectActivity extends Activity {
 
         if (selectedSurgery.equalsIgnoreCase(getString(R.string.radio_head_surgery))) {
             Intent i = new Intent(this, SurgeryFormActivity.class);
-            i.putExtra("surgeryType", SurgeryType.HEAD_SURGERY.value());
+            i.putExtra("surgeryType", SurgeryType.HEAD_SURGERY.getSurgeryType());
             startActivity(i);
             finish();
         } else if (selectedSurgery.equalsIgnoreCase(getString(R.string.radio_iv_surgery))) {
             Intent i = new Intent(this, SurgeryFormActivity.class);
-            i.putExtra("surgeryType", SurgeryType.IV_SURGERY.value());
+            i.putExtra("surgeryType", SurgeryType.IV_SURGERY.getSurgeryType());
             startActivity(i);
             finish();
         } else {
