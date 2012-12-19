@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.HttpContext;
 
@@ -81,12 +82,17 @@ public class NetworkComm extends AsyncTask<String, Integer, String> {
 
         String response = "";
         try{
+
+
             HttpResponse resp = hc.execute(p, localContext);
             InputStream is = resp.getEntity().getContent();
             response = convertStreamToString(is);
             Log.d("Response", "Response is " + response);
 
             Log.d("Status line", ""+resp.getStatusLine().getStatusCode());
+        } catch (HttpHostConnectException hhce){
+            //do error handle
+            hhce.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -104,9 +110,9 @@ public class NetworkComm extends AsyncTask<String, Integer, String> {
     }
 
     protected void onPostExecute(String result) {
-         Log.d("task", "task finished");
+        Log.d("task", "task finished");
         hc.close();
-         listener.onTaskResponse(reqType, result, extra);
+        listener.onTaskResponse(reqType, result, extra);
      }
 
      public interface TaskResponseListener{

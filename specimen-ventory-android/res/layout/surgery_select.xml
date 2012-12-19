@@ -32,6 +32,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_head_surgery" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioLesionSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_lesion_surgery"
+                android:checked="true" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioVirusSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_virus_surgery" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioElectrodeSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_electrode_surgery"
+                android:checked="true" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioOptrodeSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_optrode_surgery" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioCannulaSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_cannula_surgery" />
+        <RadioButton
+                android:paddingLeft="40dip"
+                android:id="@+id/radioTraceSurgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_trace_surgery" />
     </RadioGroup>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"

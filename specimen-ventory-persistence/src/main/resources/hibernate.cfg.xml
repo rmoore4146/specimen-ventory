@@ -16,7 +16,7 @@
 
     <!-- Mapping files will go here.... -->
     <!-- List of XML mapping files -->
-    <mapping resource="orm/HeadSurgery.xml" class="com.specimen.inventory.model.HeadSurgery"/>
     <mapping resource="orm/Specimen.xml" class="com.specimen.inventory.model.Specimen"/>
+    <mapping resource="orm/Surgery.xml" class="com.specimen.inventory.model.Surgery"/>
 </session-factory>
 </hibernate-configuration>

@@ -1,6 +1,5 @@
 package com.specimen.inventory.persistence.impl;
 
-import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
@@ -64,7 +63,7 @@ public class SurgeryServiceImpl implements SurgeryService {
 
         logger.debug("Fetching new Surgery object by id:" + id);
         Session session = sessionFactory.getCurrentSession();
-        Surgery surgery = (Surgery) session.get(HeadSurgery.class, id);
+        Surgery surgery = (Surgery) session.get(Surgery.class, id);
 
         return surgery;
     }
@@ -72,7 +71,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     public Set<Surgery> listSurgeries() {
 
-        String queryStr = "SELECT s FROM HeadSurgery as s";
+        String queryStr = "SELECT s FROM Surgery as s";
         logger.debug("Fetching all surgery objects");
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
@@ -84,7 +83,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     public Set<Surgery> listSurgeryBySpecimenId(Long id) {
 
-        String queryStr = "SELECT s FROM HeadSurgery as s WHERE s.specimen.id = :animalId";
+        String queryStr = "SELECT s FROM Surgery as s WHERE s.specimen.id = :animalId";
         logger.debug("Fetching Surgery object by specimen id:" + id);
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
@@ -97,7 +96,7 @@ public class SurgeryServiceImpl implements SurgeryService {
     @Override
     public Set<Surgery> listSurgeryBySpecimenUUID(String uuid) {
 
-        String queryStr = "SELECT s FROM HeadSurgery as s WHERE s.specimen.animalUUID = :animalId";
+        String queryStr = "SELECT s FROM Surgery as s WHERE s.specimen.animalUUID = :animalId";
         logger.debug("Fetching Surgery object by uuid:" + uuid);
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);

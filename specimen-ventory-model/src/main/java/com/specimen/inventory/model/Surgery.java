@@ -142,6 +142,10 @@ public class Surgery implements Serializable {
         this.analgesiaDose = analgesiaDose;
     }
 
+    public void setPostOperativeBehaviorList(List<PostOperativeBehavior> postOperativeBehaviorList) {
+        this.postOperativeBehaviorList = postOperativeBehaviorList;
+    }
+
     public List<PostOperativeBehavior> getPostOperativeBehaviorList() {
 
         if (postOperativeBehaviorList == null) {

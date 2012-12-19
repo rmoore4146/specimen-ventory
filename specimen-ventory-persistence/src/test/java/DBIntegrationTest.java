@@ -1,6 +1,6 @@
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.HeadSurgery;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
@@ -68,8 +68,8 @@ public class DBIntegrationTest {
         Assert.assertNull(specimen);
     }
 
-    private HeadSurgery getHeadSurgery() {
-        HeadSurgery surgery = new HeadSurgery();
+    private Surgery getHeadSurgery() {
+        Surgery surgery = new Surgery();
         surgery.setAnalgesiaDose("23G");
         surgery.setAnalgesiaType(AnalgesiaType.KETOPROFEN);
         surgery.setAnesthesiaDosage("1234G");

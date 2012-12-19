@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-    <class name="com.specimen.inventory.model.HeadSurgery" table="SURGERY">
+    <class name="com.specimen.inventory.model.Surgery" table="SURGERY">
         <id name="id" column="ID" type="java.lang.Long">
             <generator class="increment"/>
         </id>

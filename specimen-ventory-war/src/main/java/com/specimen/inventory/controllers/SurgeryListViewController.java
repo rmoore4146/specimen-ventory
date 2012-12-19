@@ -2,7 +2,7 @@ package com.specimen.inventory.controllers;
 
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.HeadSurgery;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
@@ -60,7 +60,7 @@ public class SurgeryListViewController {
     }
 
     @RequestMapping(value = "/updateSurgery", method = RequestMethod.POST)
-    public ModelAndView updateSurgery(@ModelAttribute HeadSurgery surgery) {
+    public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
@@ -80,7 +80,7 @@ public class SurgeryListViewController {
     }
 
     @RequestMapping(value = "/deleteSurgery", method = RequestMethod.POST)
-    public ModelAndView deleteSurgery(@ModelAttribute HeadSurgery surgery) {
+    public ModelAndView deleteSurgery(@ModelAttribute Surgery surgery) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");

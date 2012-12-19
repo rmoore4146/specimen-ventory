@@ -5,6 +5,12 @@
     <string name="list_specimen">View Specimen</string>
 
     <string name="radio_iv_surgery">IV Surgery</string>
+    <string name="radio_virus_surgery">Virus Surgery</string>
+    <string name="radio_lesion_surgery">Lesion Surgery</string>
+    <string name="radio_electrode_surgery">Electrode Surgery</string>
+    <string name="radio_optrode_surgery">Optrode Surgery</string>
+    <string name="radio_trace_surgery">Trace Surgery</string>
+    <string name="radio_cannula_surgery">Cannula Surgery</string>
     <string name="radio_head_surgery">Head Surgery</string>
     <string name="radio_surgery_dialog">Select a Surgery Type:</string>
 

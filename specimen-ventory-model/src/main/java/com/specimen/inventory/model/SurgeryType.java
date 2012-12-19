@@ -11,7 +11,7 @@ public enum SurgeryType {
     LESION_SURGERY("Lesion Surgery"),
     ELECTRODE_SURGERY("Electrode Surgery"),
     OPTRODE_SURGERY("Optrode Surgery"),
-    TRACE_SURGERY("Tracer Surgery"),
+    TRACE_SURGERY("Trace Surgery"),
     CANNULA_SURGERY("Cannula Surgery"),
     IV_SURGERY("IV Surgery");
 

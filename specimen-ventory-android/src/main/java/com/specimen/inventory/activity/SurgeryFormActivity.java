@@ -5,8 +5,11 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.http.AndroidHttpClient;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +26,6 @@ import com.specimen.inventory.R;
 import com.specimen.inventory.exception.ActivityRuntimeException;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.SurgeryType;
@@ -44,6 +46,7 @@ public class SurgeryFormActivity extends Activity {
     ProgressDialog dialog;
     Button datePickerButton;
     AndroidHttpClient httpClient;
+    SurgeryType instanceSurgeryType;
 
     private static final String SURGERY_POST_URL = "http://192.168.0.107:8080/test/specimen-ventory/rest/surgery/head/";
     static final int DATEINIT_DIALOG = 0;
@@ -65,24 +68,36 @@ public class SurgeryFormActivity extends Activity {
 
     public void handleSubmitButtonClick() {
 
-        Surgery createdSurgery;
-        try {
-            Surgery form = getSurgeryValuesFromScreen();
-//            createdSurgery = specimenService.createSurgery(form);
+        Boolean networkExists = isNetworkAvailable();
+        //check for network
+        if(networkExists) {
 
-            Gson g = new Gson();
-            String message = g.toJson(form);
-            this.httpClient = AndroidHttpClient.newInstance("");
-            HttpContext localContext = new BasicHttpContext();
-            NetworkComm task = new NetworkComm(httpClient, localContext, new SubmitListener(), 0, message, SURGERY_POST_URL, "");
-            task.start();
-            this.dialog.setMessage("Creating Surgery");
-            this.dialog.show();
+            Surgery createdSurgery;
+            try {
 
-        } catch (ParseException pe) {
-            throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", pe);
+                Surgery form = getSurgeryValuesFromScreen();
+    //            createdSurgery = specimenService.createSurgery(form);
+
+                Gson g = new Gson();
+                String message = g.toJson(form);
+                this.httpClient = AndroidHttpClient.newInstance("");
+                HttpContext localContext = new BasicHttpContext();
+                NetworkComm task = new NetworkComm(httpClient, localContext, new SubmitListener(), 0, message, SURGERY_POST_URL, "");
+                task.start();
+                this.dialog.setMessage("Creating Surgery");
+                this.dialog.show();
+
+            } catch (ParseException pe) {
+                throw new ActivityRuntimeException("Exception caught in createSurgeryEntry() call", pe);
+            }
+            Log.i("specimenService.createSurgeryEntry(...)", "blah made it here");
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Failure.");
+            builder.setMessage("No connection detected.");
+            builder.setNeutralButton("OK",(DialogInterface.OnClickListener) new NetworkErrorOKButtonHandler());
+            builder.show();
         }
-        Log.i("specimenService.createSurgeryEntry(...)", "blah made it here");
     }
 
     public void handleDateSet(int year, int month, int day) {
@@ -113,6 +128,7 @@ public class SurgeryFormActivity extends Activity {
         finish();
     }
 
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -127,18 +143,18 @@ public class SurgeryFormActivity extends Activity {
         //get surgery type from saved bundle
         String surgeryType = null;
         Bundle extras = getIntent().getExtras();
+        SurgeryType surgeryTypeEnum = null;
         if(extras !=null) {
             surgeryType = extras.getString("surgeryType");
+            surgeryTypeEnum = SurgeryType.fromValue(surgeryType);
         }
 
-        if(surgeryType!=null && surgeryType.equals(SurgeryType.HEAD_SURGERY.getSurgeryType())) {
-            //set view to Head surgery
+        //make sure our bundle from previous activity is good (we get surgery type form last activity)
+        if(surgeryTypeEnum!=null && surgeryType!=null) {
+            this.instanceSurgeryType = surgeryTypeEnum;
             setContentView(R.layout.head_surgery_form);
-        } else if(surgeryType!=null && surgeryType.equals(SurgeryType.IV_SURGERY.getSurgeryType())) {
-            //set view to IV surgery
-            setContentView(R.layout.iv_surgery_form);
         } else {
-            throw new ActivityRuntimeException("Bundle was bad");
+            throw new ActivityRuntimeException("SurgeryFormActivity - Bundle was bad, surgeryType or generated Enum was null;");
         }
 
         //bind list of surgeons to autocomplete field
@@ -181,7 +197,9 @@ public class SurgeryFormActivity extends Activity {
         EditText analgesiaDosageView = (EditText) findViewById(R.id.generalAnalgesiaDosage);
         EditText freeTextView = (EditText) findViewById(R.id.generalNotes);
 
-        HeadSurgery form = new HeadSurgery();
+        //use values from the screen and instance variables for filling Surgery element
+        Surgery form = new Surgery();
+        form.setSurgeryType(instanceSurgeryType);
         form.setAnalgesiaDose(analgesiaDosageView.getText().toString());
         form.setAnalgesiaType(AnalgesiaType.fromValue(selectedAnalgesiaRadioButton.getText().toString()));
         form.setAnesthesiaDosage(anesthesiaDosageView.getText().toString());
@@ -226,9 +244,31 @@ public class SurgeryFormActivity extends Activity {
             handleOKButtonClick();
         }
     }
+    private class NetworkErrorOKButtonHandler implements DialogInterface.OnClickListener {
+        public void onClick(DialogInterface arg0, int arg1) {
+            arg0.dismiss();
+        }
+    }
 
     public void handleOKButtonClick() {
         startActivity(new Intent(this, MenuActivity.class));
         finish();
+    }
+
+    private boolean isNetworkAvailable() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 }

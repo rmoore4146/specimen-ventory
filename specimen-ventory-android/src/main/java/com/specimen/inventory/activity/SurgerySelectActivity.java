@@ -1,7 +1,6 @@
 package com.specimen.inventory.activity;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.specimen.inventory.R;
-import com.specimen.inventory.model.SurgeryType;
 
 /**
  * user: ryan.moore
@@ -56,19 +54,10 @@ public class SurgerySelectActivity extends Activity {
         RadioButton selectedButton = (RadioButton) findViewById(selected);
         String selectedSurgery = (String)selectedButton.getText();
 
-        if (selectedSurgery.equalsIgnoreCase(getString(R.string.radio_head_surgery))) {
-            Intent i = new Intent(this, SurgeryFormActivity.class);
-            i.putExtra("surgeryType", SurgeryType.HEAD_SURGERY.getSurgeryType());
-            startActivity(i);
-            finish();
-        } else if (selectedSurgery.equalsIgnoreCase(getString(R.string.radio_iv_surgery))) {
-            Intent i = new Intent(this, SurgeryFormActivity.class);
-            i.putExtra("surgeryType", SurgeryType.IV_SURGERY.getSurgeryType());
-            startActivity(i);
-            finish();
-        } else {
-            throw new ActivityNotFoundException("No activity fot this case.");
-        }
+        Intent i = new Intent(this, SurgeryFormActivity.class);
+        i.putExtra("surgeryType", selectedSurgery);
+        startActivity(i);
+        finish();
     }
 
     public void handleCancelButtonClick() {

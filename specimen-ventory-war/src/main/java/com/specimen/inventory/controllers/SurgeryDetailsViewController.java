@@ -2,7 +2,6 @@ package com.specimen.inventory.controllers;
 
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.HeadSurgery;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
@@ -79,7 +78,7 @@ public class SurgeryDetailsViewController {
 
 
     @RequestMapping(value = "surgeryDetails/updateSurgeryDetails", method = RequestMethod.POST)
-    public ModelAndView updateSurgery(@ModelAttribute HeadSurgery surgery) {
+    public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryDetailsFormFields");

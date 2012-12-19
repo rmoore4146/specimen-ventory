@@ -1,6 +1,6 @@
 package com.specimen.inventory.controllers;
 
-import com.specimen.inventory.model.HeadSurgery;
+import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
 import org.apache.commons.lang.StringUtils;
@@ -37,20 +37,23 @@ public class SurgeryRequestController {
     private SurgeryService surgeryService;
 
     @RequestMapping(value = {"/rest/surgery/head/"}, method = {RequestMethod.POST})
-    public ModelAndView createHeadSurgery(@RequestBody HeadSurgery surgery, HttpServletResponse httpResponse, WebRequest request) {
+    public ModelAndView createHeadSurgery(@RequestBody Surgery surgery, HttpServletResponse httpResponse, WebRequest request) {
 
-        HeadSurgery createdSurgery = null;
+        Surgery createdSurgery = null;
         logger.info(surgery.toString());
 
         try {
-            createdSurgery = (HeadSurgery) surgeryService.createSurgery(surgery);
+            createdSurgery = (Surgery) surgeryService.createSurgery(surgery);
+
+            /* set HTTP response code */
+            httpResponse.setStatus(HttpStatus.CREATED.value());
         } catch (SurgeryServiceException sse) {
             logger.error(sse);
+            httpResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             return createErrorResponse("Failed createSurgery() operation");
         }
 
-        /* set HTTP response code */
-        httpResponse.setStatus(HttpStatus.CREATED.value());
+
 
         /* set location of created resource */
         httpResponse.setHeader("Location", request.getContextPath() + "/rest/surgery/head/" + createdSurgery.getId());
@@ -64,7 +67,7 @@ public class SurgeryRequestController {
     @RequestMapping(value = {"/rest/surgery/head/{surgeryId}"}, method = {RequestMethod.GET})
     public ModelAndView getHeadSurgery(@PathVariable("surgeryId") String surgeryId) {
 
-        HeadSurgery getSurgery = null;
+        Surgery getSurgery = null;
         Long longSurgeryId = null;
         logger.info("getHeadSurgery() with parameter -" + surgeryId);
 
@@ -78,7 +81,7 @@ public class SurgeryRequestController {
         }
 
         try {
-            getSurgery = (HeadSurgery) surgeryService.getSurgery(longSurgeryId);
+            getSurgery = (Surgery) surgeryService.getSurgery(longSurgeryId);
         } catch (SurgeryServiceException sse) {
             logger.error(sse);
             String message = "Error invoking getFund.";

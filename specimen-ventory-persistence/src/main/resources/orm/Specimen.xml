@@ -13,7 +13,7 @@
             <key>
                 <column name="ANIMALUUID" not-null="true" />
             </key>
-            <one-to-many class="com.specimen.inventory.model.HeadSurgery" />
+            <one-to-many class="com.specimen.inventory.model.Surgery" />
         </set>
     </class>
 </hibernate-mapping>
