@@ -45,3 +45,5 @@ libs/
 bin/
 gen/
 specimen-ventory-war/src/main/resources/specimen-ventory-private.properties
+idea/
+.idea/

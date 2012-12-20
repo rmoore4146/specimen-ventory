@@ -1,4 +1,4 @@
-mysqldump -d -u <username> -p<password> -h <hostname> <dbname>
+-- mysqldump -d -u <username> -p<password> -h <hostname> <dbname>
 
 -- MySQL dump 10.13  Distrib 5.5.28, for osx10.6 (i386)
 --
