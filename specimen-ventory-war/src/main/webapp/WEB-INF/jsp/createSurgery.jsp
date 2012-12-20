@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="${contextPath}/site/css/specimen-ventory/jquery.dataTables_themeroller.css"/>
     <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet" />
     <link type="text/css" href="${contextPath}/site/css/createSurgery.css" rel="Stylesheet" />
+    <link type="text/css" href="${contextPath}/site/css/header.css" rel="Stylesheet" />
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/datatables-1.8.2/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/createSurgery.js"></script>
@@ -21,8 +22,9 @@
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-ui-1.9.1.custom.min.js"></script>
 </head>
 <body>
-<h1 title="Surgery Log">Create Surgery</h1>
 <div id="pageContainer">
+    <%--Include page header--%>
+    <%@include file="headers/createSurgeryHeader.jsp"%>
     <form id="surgeryForm">
         <div class="surgeryContainer">
             <%@include file="partials/createSurgeryFormFields.jsp"%>
@@ -39,3 +41,8 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    var contextPath = "${pageContext.request.contextPath}" + '/';
+    common.initEvents();
+</script>

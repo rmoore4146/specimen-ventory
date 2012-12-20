@@ -1,21 +1,13 @@
-body {
-    width: 100%
-}
+/*body {*/
+    /*width: 100%*/
+/*}*/
 
-body h1 {
-    text-align:left;
-    /*width:700px;*/
-    height:35px;
-    margin-left:100px;
-    margin-top:5px;
-}
-
-#pageContainer {
-    margin-left: 35px;
-    margin-right: auto;
-    margin-top:5px;
-    padding:15px;
-}
+/*#pageContainer {*/
+    /*margin-left: 35px;*/
+    /*margin-right: auto;*/
+    /*margin-top:5px;*/
+    /*padding:15px;*/
+/*}*/
 
 #pageContainer form {
     float:left;

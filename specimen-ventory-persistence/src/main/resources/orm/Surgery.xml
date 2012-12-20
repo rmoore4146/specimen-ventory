@@ -18,6 +18,7 @@
         <property name="analgesiaType" />
         <property name="analgesiaDose" />
         <property name="freeText" />
+        <property name="surgeryType" />
 
         <!--postOperativeBehaviorList-->
         <!--<property name="firstDayAfterSurgeryDescription" />-->

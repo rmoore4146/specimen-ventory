@@ -1,0 +1,18 @@
+body #pageContainer .mainHeader {
+    text-align:right;
+    width: 350px;
+    height:35px;
+    margin-left:auto;
+    padding:5px;
+    float:right;
+}
+
+body #pageContainer .links {
+    text-align:left;
+    width: 350px;
+    height:35px;
+    margin-left:auto;
+    padding:5px;
+    float:left;
+    color: #c30200;
+}

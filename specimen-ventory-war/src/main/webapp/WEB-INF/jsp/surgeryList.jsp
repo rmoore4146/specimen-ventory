@@ -13,6 +13,8 @@
     <link type="text/css" href="${contextPath}/site/css/specimen-ventory/jquery-ui-1.9.1.custom.min.css" rel="Stylesheet" />
     <link rel="stylesheet" href="${contextPath}/site/css/specimen-ventory/jquery.dataTables_themeroller.css"/>
     <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet" />
+    <link type="text/css" href="${contextPath}/site/css/header.css" rel="Stylesheet" />
+
     <link type="text/css" href="${contextPath}/site/css/surgeryList.css" rel="Stylesheet" />
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/datatables-1.8.2/jquery.dataTables.min.js"></script>
@@ -22,7 +24,10 @@
 </head>
 <body>
     <div id="pageContainer">
-        <h1 title="Surgery Log">Surgery Log</h1>
+
+        <%--Include header for this page--%>
+        <%@include file="headers/surgeryListHeader.jsp"%>
+
         <div class="surgeryTableContainer">
             <table id="surgeryTable" cellpadding="0" cellspacing="0" border="0" class="display dataTable" >
                 <thead>
@@ -54,3 +59,8 @@
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    var contextPath = "${pageContext.request.contextPath}" + '/';
+    common.initEvents();
+</script>
