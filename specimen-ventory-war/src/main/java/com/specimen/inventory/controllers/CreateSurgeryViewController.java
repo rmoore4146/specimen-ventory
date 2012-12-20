@@ -3,6 +3,7 @@ package com.specimen.inventory.controllers;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
+import com.specimen.inventory.model.SurgeryType;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
@@ -24,10 +25,10 @@ import java.util.Set;
 
 /**
  * user: ryan.moore
- * date: 11/12/12
+ * date: 12/19/12
  */
 @Controller
-public class SurgeryListViewController {
+public class CreateSurgeryViewController {
 
     private static final Logger logger = Logger.getLogger(SurgeryListViewController.class);
     private static final String SURGERY_UPDATE_MSG = "An error occurred while updating surgery.";
@@ -47,18 +48,19 @@ public class SurgeryListViewController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormatter, true));
     }
 
-    @RequestMapping(value = "/surgeryList", method = RequestMethod.GET)
+    @RequestMapping(value = "/createSurgery", method = RequestMethod.GET)
     public String getSurgeryView(ModelMap map) {
 
         Set<Surgery> surgerySet = surgeryService.listSurgeries();
 
         map.addAttribute("analgesiaTypes", AnalgesiaType.values());
         map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
-        map.addAttribute("surgerySet", surgerySet);
-        return "surgeryList";
+        map.addAttribute("surgeryTypes", SurgeryType.values());
+
+        return "createSurgery";
     }
 
-    @RequestMapping(value = "/updateSurgery", method = RequestMethod.POST)
+    @RequestMapping(value = "/createSurgery", method = RequestMethod.POST)
     public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -69,24 +71,6 @@ public class SurgeryListViewController {
             modelAndView.addObject("surgery", updatedSurgery);
             modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
             modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
-        } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
-            modelAndView.setViewName("error");
-            modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
-        }
-
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/deleteSurgery", method = RequestMethod.POST)
-    public ModelAndView deleteSurgery(@ModelAttribute Surgery surgery) {
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("partials/surgeryRow");
-
-        try{
-            surgeryService.deleteSurgery(surgery.getId());
-            modelAndView.addObject("surgery", surgery);
         } catch (SurgeryServiceException sse) {
             logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
             modelAndView.setViewName("error");
