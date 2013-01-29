@@ -16,7 +16,7 @@
         <input class="hidden" name="id" id="specimenSurgeryIdInput-${surgery.id}" value="${surgery.id}"/>
     </td>
     <td class="specimenProcedureTd">
-        <spring:url var="detailsUrl" value='/surgeryDetails/${surgery.id}'/>
+        <spring:url var="detailsUrl" value='surgeryDetails/${surgery.id}'/>
         <a id="specimenProcedureLink-${surgery.id}" class="nonEdit" href="${detailsUrl}">${surgery.procedureName}</a>
         <%--<span id="specimenProcedureSpan-${surgery.id}" class="nonEdit">${surgery.procedureName}</span>--%>
         <input class="edit hidden small" name="procedureName" id="specimenProcedureInput-${surgery.id}" value="${surgery.procedureName}"/>
