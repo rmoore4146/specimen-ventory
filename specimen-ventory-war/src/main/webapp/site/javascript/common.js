@@ -2,16 +2,16 @@ var contextPath = "";
 
 var common = {
 
-    basePath:'specimen-ventory/',
+//    basePath:'specimen-ventory/',
 
 
     initEvents: function() {
         //do span binding
         $("#pageContainer").delegate(".createSpan", "click", function() {
-            common.getToForm("specimen-ventory/createSurgery");
+            common.getToForm("jhou/createSurgery");
         });
         $("#pageContainer").delegate(".listSpan", "click", function() {
-            common.getToForm("specimen-ventory/surgeryList")
+            common.getToForm("jhou/surgeryList")
         });
     },
 

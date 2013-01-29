@@ -13,8 +13,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>specimen-ventory-war</name>
-    <url>specimen-ventory-war</url>
+    <name>specimen-ventory</name>
+    <url>jhou</url>
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -66,10 +66,10 @@
                     <webResources>
                         <resource>
                             <directory>src/main/webapp</directory>
-                            <filtering>true</filtering>
-                            <includes>
-                                <include>**/appengine-web.xml</include>
-                            </includes>
+                            <filtering>false</filtering>
+                            <!--<includes>-->
+                                <!--<include>**/appengine-web.xml</include>-->
+                            <!--</includes>-->
                         </resource>
                     </webResources>
                 </configuration>

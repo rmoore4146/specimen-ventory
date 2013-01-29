@@ -11,7 +11,7 @@
 -- Table structure for table `SPECIMEN`
 --
 
-CREATE DATABASE `specimeninventory`;
+-- CREATE DATABASE `specimeninventory`;
 
 
 DROP TABLE IF EXISTS `SPECIMEN`;
