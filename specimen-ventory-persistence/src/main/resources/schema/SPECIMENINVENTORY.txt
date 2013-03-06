@@ -1,54 +1,67 @@
 -- mysqldump -d -u <username> -p<password> -h <hostname> <dbname>
 
--- MySQL dump 10.13  Distrib 5.5.28, for osx10.6 (i386)
+
+-- MySQL dump 10.13  Distrib 5.5.29, for osx10.6 (i386)
 --
 -- Host: localhost    Database: specimeninventory
 -- ------------------------------------------------------
--- Server version	5.5.28
-
+-- Server version	5.5.29
 
 --
 -- Table structure for table `SPECIMEN`
 --
 
--- CREATE DATABASE `specimeninventory`;
-
-
+DROP TABLE IF EXISTS `PROCEDURETYPE_ASSOC`;
+DROP TABLE IF EXISTS `SURGERYTYPE_ASSOC`;
+DROP TABLE IF EXISTS `SURGERY`;
 DROP TABLE IF EXISTS `SPECIMEN`;
 
 CREATE TABLE `SPECIMEN` (
   `ID` bigint(20) NOT NULL,
-  `animalUUID` varchar(255) DEFAULT NULL,
+  `ANIMALUUID` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `animalUUID_UNIQUE` (`animalUUID`)
+  UNIQUE KEY `animalUUID_UNIQUE` (`ANIMALUUID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Table structure for table `SURGERY`
 --
 
-DROP TABLE IF EXISTS `SURGERY`;
-
 CREATE TABLE `SURGERY` (
   `ID` bigint(20) NOT NULL,
   `ANIMALUUID` bigint(20) DEFAULT NULL,
-  `surgeryDate` datetime DEFAULT NULL,
-  `timeStart` varchar(255) DEFAULT NULL,
-  `timeEnd` varchar(255) DEFAULT NULL,
-  `surgeon` varchar(255) DEFAULT NULL,
-  `procedureName` varchar(255) DEFAULT NULL,
-  `anesthesiaType` tinyblob,
-  `anesthesiaDosage` varchar(255) DEFAULT NULL,
-  `analgesiaType` tinyblob,
-  `analgesiaDose` varchar(255) DEFAULT NULL,
-  `freeText` varchar(255) DEFAULT NULL,
-  `SURGERYTYPE` tinyblob,
+  `SURGERYDATE` datetime DEFAULT NULL,
+  `TIMESTART` varchar(255) DEFAULT NULL,
+  `TIMEEND` varchar(255) DEFAULT NULL,
+  `SURGEON` varchar(255) DEFAULT NULL,
+  `ANESTHESIATYPE` tinyblob,
+  `ANESTHESIADOSE` varchar(255) DEFAULT NULL,
+  `ANALGESIATYPE` tinyblob,
+  `ANALGESIADOSE` varchar(255) DEFAULT NULL,
+  `FREETEXT` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FKBC55FDD597068ADF` (`ANIMALUUID`),
-  CONSTRAINT `FKBC55FDD597068ADF` FOREIGN KEY (`ANIMALUUID`) REFERENCES `SPECIMEN` (`ID`)
+  CONSTRAINT `SPECIMEN_FK` FOREIGN KEY (`ANIMALUUID`) REFERENCES `SPECIMEN` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Table structure for table `SURGERYTYPE_ASSOC`
+--
 
--- Dump completed on 2012-12-19 19:44:50
+CREATE TABLE `SURGERYTYPE_ASSOC` (
+  `SURGERY_ID` bigint(20) NOT NULL,
+  `SURGERYTYPE` tinyblob NOT NULL,
+  KEY `SURGERY_ID_IDX` (`SURGERY_ID`),
+  CONSTRAINT `ST_SURGERY_FK` FOREIGN KEY (`SURGERY_ID`) REFERENCES `SURGERY` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Table structure for table `PROCEDURETYPE_ASSOC`
+--
+
+CREATE TABLE `PROCEDURETYPE_ASSOC` (
+  `SURGERY_ID` bigint(20) NOT NULL,
+  `PROCEDURETYPE` tinyblob NOT NULL,
+  KEY `PT_SURGERY_ID_IDX` (`SURGERY_ID`),
+  CONSTRAINT `SURGERY_FK` FOREIGN KEY (`SURGERY_ID`) REFERENCES `SURGERY` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
