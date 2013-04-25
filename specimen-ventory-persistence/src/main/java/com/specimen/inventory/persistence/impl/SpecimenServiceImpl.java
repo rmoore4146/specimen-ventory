@@ -61,7 +61,7 @@ public class SpecimenServiceImpl implements SpecimenService {
         logger.debug("Inserting new Specimen object");
         Session session = sessionFactory.getCurrentSession();
         session.save(specimen);
-        session.close();
+        session.flush();
 
         return specimen;
     }

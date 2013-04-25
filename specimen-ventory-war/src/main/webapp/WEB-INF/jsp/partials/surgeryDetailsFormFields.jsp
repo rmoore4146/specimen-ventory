@@ -6,7 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.specimen.inventory.model.AnesthesiaType" %>
 <%@ page import="com.specimen.inventory.model.AnalgesiaType" %>
-<%@ page import="com.specimen.inventory.model.Surgery" %>
+<%@ page import="com.specimen.inventory.model.SurgeryFormBean" %>
 
 <ul class="formFields col2">
     <li class="specimenAnimalIdLi">

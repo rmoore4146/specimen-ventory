@@ -1,5 +1,6 @@
 package com.specimen.inventory.controllers;
 
+import com.specimen.inventory.controllers.model.SurgeryFormBean;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
@@ -61,18 +62,20 @@ public class CreateSurgeryViewController {
     }
 
     @RequestMapping(value = "/createSurgery", method = RequestMethod.POST)
-    public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
+    public ModelAndView updateSurgery(@ModelAttribute SurgeryFormBean surgery) {
+
+        Surgery internalSurgery = surgery.getTransformedSurgery();
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
 
         try{
-            Surgery updatedSurgery = surgeryService.updateSurgery(surgery);
-            modelAndView.addObject("surgery", updatedSurgery);
+            Surgery updatedSurgery = surgeryService.updateSurgery(internalSurgery);
+            modelAndView.addObject("surgery", new SurgeryFormBean(updatedSurgery));
             modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
             modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
         } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
+            logger.error(SURGERY_UPDATE_MSG + " Id -" + internalSurgery.getId(), sse);
             modelAndView.setViewName("error");
             modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
         }

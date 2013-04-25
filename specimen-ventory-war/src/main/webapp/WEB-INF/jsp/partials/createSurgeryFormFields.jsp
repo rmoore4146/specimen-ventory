@@ -7,44 +7,53 @@
 <%@ page import="com.specimen.inventory.model.AnesthesiaType" %>
 <%@ page import="com.specimen.inventory.model.AnalgesiaType" %>
 <%@ page import="com.specimen.inventory.model.Surgery" %>
+<%@ page import="com.specimen.inventory.model.SurgeryType" %>
 
 <ul class="formFields col1">
     <li class="specimenAnimalIdLi">
         <label class="surgeryDateLabel">Specimen UUID: </label>
-        <input class="edit tiny" name="specimen.animalUUID" id="specimenAnimalIdInput" value="${surgery.specimen.animalUUID}"/>
+        <input class="edit tiny"  name="surgery.specimen.animalUUID" id="specimenAnimalIdInput" value="${surgery.specimen.animalUUID}"/>
     </li>
     <li class="specimenSurgeryTypeLi">
         <label class="surgeryTypeLabel">Surgery Type: </label>
-        <select title="surgeryTypeSelect" id="surgeryTypeSelect" name="surgeryType" class="small edit">
-            <option value=""> </option>
-            <c:forEach items="${surgeryTypes}" var="value">
-                <option value="${value}">${value.surgeryType}</option>
+        <ul>
+            <c:forEach items="${surgeryTypes}" var="value" varStatus="typeIndex">
+                <li>
+                    <input type="radio"  name="surgeryTypes[${typeIndex.index}]" value="${value}">${value.surgeryType}</input>
+                </li>
             </c:forEach>
-        </select>
+
+        </ul>
+        <%--<select title="surgeryTypeSelect" id="surgeryTypeSelect"  name="surgeryType" class="small edit">--%>
+            <%--<option value=""> </option>--%>
+            <%--<c:forEach items="${surgeryTypes}" var="value">--%>
+                <%--<option value="${value}">${value.surgeryType}</option>--%>
+            <%--</c:forEach>--%>
+        <%--</select>--%>
     </li>
     <li class="specimenProcedureLi">
         <label class="surgeryDateLabel">Procedure: </label>
-        <input class="edit small" name="procedureName" id="specimenProcedureInput" value="${surgery.procedureName}"/>
+        <input class="edit small"  name="surgery.procedureName" id="specimenProcedureInput" value="${surgery.procedureName}"/>
     </li>
     <li class="specimenSurgeonLi">
         <label class="surgeryDateLabel">Surgeon: </label>
-        <input class="edit mini" name="surgeon" id="specimenSurgeonInput" value="${surgery.surgeon}"/>
+        <input class="edit mini"  name="surgery.surgeon" id="specimenSurgeonInput" value="${surgery.surgeon}"/>
     </li>
     <li class="specimenStartLi">
         <label class="surgeryDateLabel">Start Time: </label>
-        <input class="edit tiny" name="timeStart" id="specimenStartInput" value="${surgery.timeStart}"/>
+        <input class="edit tiny"  name="surgery.timeStart" id="specimenStartInput" value="${surgery.timeStart}"/>
     </li>
     <li class="specimenEndLi">
         <label class="surgeryDateLabel">End Time: </label>
-        <input class="edit tiny" name="timeEnd" id="specimenEndInput" value="${surgery.timeEnd}"/>
+        <input class="edit tiny"  name="surgery.timeEnd" id="specimenEndInput" value="${surgery.timeEnd}"/>
     </li>
     <li class="specimenDateDt">
         <label class="surgeryDateLabel">Surgery Date: </label>
-        <input class="edit mini" name="surgeryDate" id="specimenDateInput" value="${surgeryDate}"/>
+        <input class="edit mini"  name="surgery.surgeryDate" id="specimenDateInput" value="${surgeryDate}"/>
     </li>
     <li class="specimenAnesthesiaTypeLi">
         <label class="surgeryDateLabel">Anesthesia Type: </label>
-        <select title="anesthesiaTypeSelect" id="anesthesiaTypeSelect" name="anesthesiaType" class="small edit">
+        <select title="anesthesiaTypeSelect" id="anesthesiaTypeSelect"  name="surgery.anesthesiaType" class="small edit">
             <option value=""> </option>
             <c:forEach items="${anesthesiaTypes}" var="value">
                 <option value="${value}">${value.medicine}</option>
@@ -53,11 +62,11 @@
     </li>
     <li class="specimenAnesthesiaDoseLi">
         <label class="surgeryDateLabel">Anesthesia Dose: </label>
-        <input class="edit mini" name="anesthesiaDosage" id="specimenAnesthesiaDoseInput" value="${surgery.anesthesiaDosage}"/>
+        <input class="edit mini"  name="surgery.anesthesiaDosage" id="specimenAnesthesiaDoseInput" value="${surgery.anesthesiaDosage}"/>
     </li>
     <li class="specimenAnalgesiaTypeLi">
         <label class="surgeryDateLabel">Analgesia Type: </label>
-        <select title="analgesiaTypeSelect" id="analgesiaTypeSelect" name="analgesiaType" class="small edit">
+        <select title="analgesiaTypeSelect" id="analgesiaTypeSelect"  name="surgery.analgesiaType" class="small edit">
             <option value=""> </option>
             <c:forEach items="${analgesiaTypes}" var="value">
                 <option value="${value}">${value.medicine}</option>
@@ -66,10 +75,10 @@
     </li>
     <li class="specimenAnalgesiaDoseLi">
         <label class="surgeryDateLabel">Analgesia Dose: </label>
-        <input class="edit mini" name="analgesiaDose" id="specimenAnalgesiaDoseInput" value="${surgery.analgesiaDose}"/>
+        <input class="edit mini"  name="surgery.analgesiaDose" id="specimenAnalgesiaDoseInput" value="${surgery.analgesiaDose}"/>
     </li>
     <li class="specimenNotesLi">
         <label class="surgeryDateLabel">Notes: </label>
-        <input class="edit" name="freeText" id="specimenNotesInput" value="${surgery.freeText}"/>
+        <input class="edit"  name="surgery.freeText" id="specimenNotesInput" value="${surgery.freeText}"/>
     </li>
 </ul>

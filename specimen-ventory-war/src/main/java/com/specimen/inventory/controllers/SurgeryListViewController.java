@@ -3,6 +3,7 @@ package com.specimen.inventory.controllers;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
+import com.specimen.inventory.controllers.model.SurgeryFormBean;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -50,7 +52,13 @@ public class SurgeryListViewController {
     @RequestMapping(value = "/surgeryList", method = RequestMethod.GET)
     public String getSurgeryView(ModelMap map) {
 
-        Set<Surgery> surgerySet = surgeryService.listSurgeries();
+        Set<Surgery> actualSurgerySet = surgeryService.listSurgeries();
+
+        Set<SurgeryFormBean> surgerySet = new HashSet<SurgeryFormBean>();
+
+        for(Surgery surgery : actualSurgerySet) {
+            surgerySet.add(new SurgeryFormBean(surgery));
+        }
 
         map.addAttribute("analgesiaTypes", AnalgesiaType.values());
         map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
@@ -59,18 +67,20 @@ public class SurgeryListViewController {
     }
 
     @RequestMapping(value = "/updateSurgery", method = RequestMethod.POST)
-    public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
+    public ModelAndView updateSurgery(@ModelAttribute SurgeryFormBean surgery) {
+
+        Surgery actualSurgery = surgery.getTransformedSurgery();
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
 
         try{
-            Surgery updatedSurgery = surgeryService.updateSurgery(surgery);
-            modelAndView.addObject("surgery", updatedSurgery);
+            Surgery updatedSurgery = surgeryService.updateSurgery(actualSurgery);
+            modelAndView.addObject("surgery", new SurgeryFormBean(updatedSurgery));
             modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
             modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
         } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
+            logger.error(SURGERY_UPDATE_MSG + " Id -" + actualSurgery.getId(), sse);
             modelAndView.setViewName("error");
             modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
         }
@@ -79,16 +89,18 @@ public class SurgeryListViewController {
     }
 
     @RequestMapping(value = "/deleteSurgery", method = RequestMethod.POST)
-    public ModelAndView deleteSurgery(@ModelAttribute Surgery surgery) {
+    public ModelAndView deleteSurgery(@ModelAttribute SurgeryFormBean surgery) {
+
+        Surgery actualSurgery = surgery.getTransformedSurgery();
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
 
         try{
-            surgeryService.deleteSurgery(surgery.getId());
-            modelAndView.addObject("surgery", surgery);
+            surgeryService.deleteSurgery(actualSurgery.getId());
+            modelAndView.addObject("surgery", actualSurgery);
         } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getId(), sse);
+            logger.error(SURGERY_UPDATE_MSG + " Id -" + actualSurgery.getId(), sse);
             modelAndView.setViewName("error");
             modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
         }
