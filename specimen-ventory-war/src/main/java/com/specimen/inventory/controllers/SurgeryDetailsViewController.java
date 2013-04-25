@@ -79,18 +79,19 @@ public class SurgeryDetailsViewController {
 
 
     @RequestMapping(value = "surgeryDetails/updateSurgeryDetails", method = RequestMethod.POST)
-    public ModelAndView updateSurgery(@ModelAttribute Surgery surgery) {
+    public ModelAndView updateSurgery(@ModelAttribute SurgeryFormBean surgery) {
 
+        Surgery actualSurgery = surgery.getTransformedSurgery();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("partials/surgeryDetailsFormFields");
+        modelAndView.setViewName("partials/surgeryFormFields");
 
         try{
-            Surgery updatedSurgery = surgeryService.updateSurgery(surgery);
+            Surgery updatedSurgery = surgeryService.updateSurgery(actualSurgery);
             modelAndView.addObject("surgery", new SurgeryFormBean(updatedSurgery));
             modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
             modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
         } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_ERROR_MSG + " Id -" + surgery.getId(), sse);
+            logger.error(SURGERY_UPDATE_ERROR_MSG + " Id -" + actualSurgery.getId(), sse);
             modelAndView.setViewName("error");
             modelAndView.addObject("errorMessage", SURGERY_UPDATE_ERROR_MSG);
         }

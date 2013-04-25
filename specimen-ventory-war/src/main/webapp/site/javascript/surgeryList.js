@@ -19,25 +19,30 @@ var surgeryList = {
         // - bJQueryUI flag enable ThemeRoller support
         // - sPaginationType is simple pagination flag
         // - aoColumns defines all the columns
+        var hiddenCols=[0,1,2,12];
         var oTable = $('#surgeryTable').dataTable({
+            "sDom": '<"H"Clfr>t<"F"ip>',
             "bJQueryUI": true,
             "sPaginationType": "full_numbers",
+            "oColVis": {
+                "aiExclude": hiddenCols
+            },
             "aoColumns": [
                 { "sType": "html", "bVisible": true, "mDataProp": "animalId", "bSortable": true, "bSearchable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "procedure", "bSortable": true, "bSearchable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "surgeryTypes", "bSortable": true, "bSearchable": true},
-                { "sType": "html", "bVisible": true, "mDataProp": "notes", "bSortable": true, "bSearchable": true},
+                { "sType": "html", "bVisible": false, "mDataProp": "notes", "bSortable": true, "bSearchable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "surgeon", "bSortable": true, "bSearchable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "start", "bSortable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "end", "bSortable": true, "bSearchable": true},
                 { "sType": "html", "bVisible": true, "mDataProp": "date", "bSortable": true, "bSearchable": true},
-                { "sType": "html", "bVisible": true, "mDataProp": "anesthesiaType", "bSortable": true, "bSearchable": true},
-                { "sType": "html", "bVisible": true, "mDataProp": "anesthesiaDose", "bSortable": true, "bSearchable": true},
-                { "sType": "html", "bVisible": true, "mDataProp": "analgesiaType", "bSortable": true, "bSearchable": true},
-                { "sType": "html", "bVisible": true, "mDataProp": "analgesiaDose", "bSortable": true, "bSearchable": true},
+                { "sType": "html", "bVisible": false, "mDataProp": "anesthesiaType", "bSortable": true, "bSearchable": true},
+                { "sType": "html", "bVisible": false, "mDataProp": "anesthesiaDose", "bSortable": true, "bSearchable": true},
+                { "sType": "html", "bVisible": false, "mDataProp": "analgesiaType", "bSortable": true, "bSearchable": true},
+                { "sType": "html", "bVisible": false, "mDataProp": "analgesiaDose", "bSortable": true, "bSearchable": true},
                 { "bVisible": true, "bSortable": false, "bSearchable": false,  "sWidth": "110px"}
             ]
-        } );
+        });
     },
 
 

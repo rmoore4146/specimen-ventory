@@ -12,6 +12,7 @@
     <%--<link type="text/css" href="${contextPath}/site/css/dot-luv/jquery-ui-1.8.21.custom.css" rel="Stylesheet" />--%>
     <link type="text/css" href="${contextPath}/site/css/specimen-ventory/jquery-ui-1.9.1.custom.min.css" rel="Stylesheet" />
     <link rel="stylesheet" href="${contextPath}/site/css/specimen-ventory/jquery.dataTables_themeroller.css"/>
+    <link rel="stylesheet" href="${contextPath}/site/css/ColVis.css"/>
     <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet" />
     <link type="text/css" href="${contextPath}/site/css/header.css" rel="Stylesheet" />
 
@@ -21,6 +22,7 @@
     <script type="text/javascript" src="${contextPath}/site/javascript/surgeryList.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/common.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-ui-1.9.1.custom.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/site/javascript/ColVis.min.js"></script>
 </head>
 <body>
     <div id="pageContainer">

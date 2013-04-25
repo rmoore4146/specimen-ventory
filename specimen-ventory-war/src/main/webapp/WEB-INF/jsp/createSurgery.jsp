@@ -27,7 +27,7 @@
     <%@include file="headers/createSurgeryHeader.jsp"%>
     <form id="surgeryForm">
         <div class="surgeryContainer">
-            <%@include file="partials/createSurgeryFormFields.jsp"%>
+            <%@include file="partials/surgeryFormFields.jsp"%>
         </div>
     </form>
     <br>
