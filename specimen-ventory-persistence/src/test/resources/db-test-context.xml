@@ -40,6 +40,6 @@
           p:sessionFactory-ref="sessionFactory"
           p:nestedTransactionAllowed="true"/>
 
-    <bean id="surgeryService" class="com.specimen.inventory.persistence.impl.SurgeryServiceImpl"/>
-    <bean id="specimenService" class="com.specimen.inventory.persistence.impl.SpecimenServiceImpl"/>
+    <!--<bean id="surgeryService" class="com.specimen.inventory.persistence.impl.SurgeryServiceImpl"/>-->
+    <!--<bean id="specimenService" class="com.specimen.inventory.persistence.impl.SpecimenServiceImpl"/>-->
 </beans>

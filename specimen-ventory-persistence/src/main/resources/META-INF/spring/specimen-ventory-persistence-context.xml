@@ -18,7 +18,7 @@
     <context:property-placeholder
             ignore-unresolvable="true"
             ignore-resource-not-found="true"
-            location="classpath:specimen-ventory-war.properties,classpath:specimen-ventory-private.properties"/>
+            location="classpath:specimen-ventory-war.properties,classpath:specimen-ventory-war.properties,classpath:specimen-ventory-private.properties"/>
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
