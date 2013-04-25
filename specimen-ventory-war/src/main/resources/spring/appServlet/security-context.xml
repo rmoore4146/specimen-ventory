@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+<security:global-method-security secured-annotations="enabled" />
+
+    <import resource="classpath:META-INF/spring/specimen-ventory-persistence-context.xml"/>
+
+    <security:http auto-config="true">
+        <!-- Restrict URLs based on role -->
+        <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/logoutSuccess*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+        <security:intercept-url pattern="/css/main.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+        <security:intercept-url pattern="/site/javascript/datatables-1.8.2/tableTools-2.0.1/as3" access="ROLE_USER" />
+
+        <!-- Override default login and logout pages -->
+        <security:form-login login-page="/security/login.html"
+                             login-processing-url="/loginProcess"
+                             default-target-url="/security/index.jsp"
+                             authentication-failure-url="/login.html?login_error=1" />
+        <security:logout logout-url="/security/logout" logout-success-url="/security/logoutSuccess.html" />
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider >
+            <security:jdbc-user-service data-source-ref="dataSource" />
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>

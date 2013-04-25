@@ -4,8 +4,10 @@ import com.specimen.inventory.controllers.model.SurgeryFormBean;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
+import com.specimen.inventory.model.SurgeryType;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
+import com.specimen.inventory.web.utils.FormUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -67,6 +69,7 @@ public class SurgeryDetailsViewController {
             }
             map.addAttribute("analgesiaTypes", AnalgesiaType.values());
             map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
+            map.addAttribute("surgeryTypes", SurgeryType.values());
             map.addAttribute("surgery", new SurgeryFormBean(surgery));
             return "surgeryDetails";
 
@@ -84,6 +87,8 @@ public class SurgeryDetailsViewController {
         Surgery actualSurgery = surgery.getTransformedSurgery();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryFormFields");
+
+        FormUtil.fixSurgeryTypes(actualSurgery);
 
         try{
             Surgery updatedSurgery = surgeryService.updateSurgery(actualSurgery);

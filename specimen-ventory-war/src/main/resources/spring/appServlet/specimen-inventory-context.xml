@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:oxm="http://www.springframework.org/schema/oxm"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                                    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
-                                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-                                    http://www.springframework.org/schema/oxm  
-                                    http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd  
-                                    http://www.springframework.org/schema/util  
-                                     http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-3.0.xsd">
     <!--
           Enables automatic mapping of fund objects to and from JSON
     -->
@@ -23,6 +24,7 @@
     -->
     <context:component-scan base-package="com.specimen.inventory.controllers"/>
     <import resource="classpath:META-INF/spring/specimen-ventory-persistence-context.xml"/>
+    <import resource="security-context.xml"/>
 
     <!--<context:component-scan base-package="com.blog.samples.services" />-->
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
@@ -46,4 +48,7 @@
           Converts JSON to POJO and vice versa
     -->
     <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basenames="messages" />
 </beans>

@@ -35,7 +35,7 @@ function saveSurgery() {
         dataType: 'html',
         success: function(result) {
             if (result.indexOf('error') == -1) {
-                alert("Success!");
+                alert("Your surgery has been created successfully.");
             }
             else {
                 alert(result);

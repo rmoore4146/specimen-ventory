@@ -47,5 +47,6 @@ body h1 {
 
 .col2 li{display:inline-block;float:left;width:49%;}
 .col2 select{width:auto;}
-.col1 li{display:inline-block;float:left;width:80%;}
-.col1 select{width:auto;}
+.col1 li>span:first-child{width:30%}
+.col1 li{display:inline-block;float:left;width:80%}
+.col1 select{width:auto}

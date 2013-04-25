@@ -27,6 +27,7 @@
         <property name="configLocation" value="classpath:hibernate.cfg.xml" />
     </bean>
 
+
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>

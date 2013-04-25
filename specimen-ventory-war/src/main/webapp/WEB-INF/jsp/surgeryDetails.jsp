@@ -36,17 +36,11 @@
         </div>
         <div class="buttonContainer">
             <small>
-                <button id="specimenSaveButton" class="surgeryButton saveButton edit hidden">
+                <button id="specimenSaveButton" class="surgeryButton saveButton">
                     <span class="ui-icon ui-icon-disk"></span>
                 </button>
-                <button id="specimenEditButton" class="surgeryButton editButton nonEdit">
-                    <span class="ui-icon ui-icon-pencil"></span>
-                </button>
-                <button id="specimenDeleteButton" class="surgeryButton deleteButton nonEdit">
+                <button id="specimenDeleteButton" class="surgeryButton deleteButton">
                     <span class="ui-icon ui-icon-trash"></span>
-                </button>
-                <button id="specimenCancelButton" class="surgeryButton cancelButton edit hidden">
-                    <span class="ui-icon ui-icon-cancel"></span>
                 </button>
             </small>
         </div>

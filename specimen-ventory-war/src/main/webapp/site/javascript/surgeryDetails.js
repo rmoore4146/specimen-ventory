@@ -24,19 +24,9 @@ var surgeryDetails = {
             saveSurgery();
         });
 
-        //Edit button delegate
-        $("#pageContainer").delegate(".editButton", "click", function() {
-            editSurgery();
-        });
-
         //Delete button delegate
         $("#pageContainer").delegate(".deleteButton", "click", function() {
             deleteSurgery();
-        });
-
-        //Cancel button delegate
-        $("#pageContainer").delegate(".cancelButton", "click", function() {
-            cancelSurgery();
         });
     }
 };
@@ -52,9 +42,7 @@ function saveSurgery() {
         dataType: 'html',
         success: function(result) {
             if (result.indexOf('error') == -1) {
-                var $resultHtml = $(result);
-                $('#pageContainer').find('ul').replaceWith($resultHtml);
-                surgeryDetails.initStyling();
+                alert("Surgery was updated successfully.");
             }
             else {
                 alert(result);
@@ -64,14 +52,6 @@ function saveSurgery() {
             alert("An undisclosed error has occurred. Update failed.");
         }
     });
-}
-
-function editSurgery() {
-    toggleEditSurgery();
-}
-
-function cancelSurgery() {
-    toggleEditSurgery();
 }
 
 function deleteSurgery() {

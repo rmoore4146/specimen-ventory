@@ -8,6 +8,7 @@ import com.specimen.inventory.model.SurgeryType;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
+import com.specimen.inventory.web.utils.FormUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -68,6 +69,8 @@ public class CreateSurgeryViewController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
+
+        FormUtil.fixSurgeryTypes(internalSurgery);
 
         try{
             Surgery updatedSurgery = surgeryService.updateSurgery(internalSurgery);
