@@ -98,7 +98,7 @@ public class SurgeryListViewController {
 
         try{
             surgeryService.deleteSurgery(actualSurgery.getId());
-            modelAndView.addObject("surgery", actualSurgery);
+            modelAndView.addObject("surgery", new SurgeryFormBean(actualSurgery));
         } catch (SurgeryServiceException sse) {
             logger.error(SURGERY_UPDATE_MSG + " Id -" + actualSurgery.getId(), sse);
             modelAndView.setViewName("error");

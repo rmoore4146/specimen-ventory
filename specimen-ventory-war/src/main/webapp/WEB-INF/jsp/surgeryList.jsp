@@ -34,6 +34,7 @@
                     <tr>
                         <th>Animal</th>
                         <th>Procedure</th>
+                        <th>Type</th>
                         <th>Notes</th>
                         <th>Surgeon</th>
                         <th>Start</th>

@@ -1,5 +1,6 @@
 package com.specimen.inventory.controllers;
 
+import com.specimen.inventory.controllers.model.SurgeryFormBean;
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
 import com.specimen.inventory.model.Surgery;
@@ -66,7 +67,7 @@ public class SurgeryDetailsViewController {
             }
             map.addAttribute("analgesiaTypes", AnalgesiaType.values());
             map.addAttribute("anesthesiaTypes", AnesthesiaType.values());
-            map.addAttribute("surgery", surgery);
+            map.addAttribute("surgery", new SurgeryFormBean(surgery));
             return "surgeryDetails";
 
         } else {
@@ -85,7 +86,7 @@ public class SurgeryDetailsViewController {
 
         try{
             Surgery updatedSurgery = surgeryService.updateSurgery(surgery);
-            modelAndView.addObject("surgery", updatedSurgery);
+            modelAndView.addObject("surgery", new SurgeryFormBean(updatedSurgery));
             modelAndView.addObject("analgesiaTypes", AnalgesiaType.values());
             modelAndView.addObject("anesthesiaTypes", AnesthesiaType.values());
         } catch (SurgeryServiceException sse) {

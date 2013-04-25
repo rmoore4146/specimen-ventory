@@ -9,5 +9,6 @@
     <span class="link listSpan">Surgery List</span> |
     <span class="link createSpan">Create Surgery</span>
 </h1>
-<h1 class="mainHeader" title="Surgery Log">${surgery.surgeryType} - ${surgery.procedureName}</h1>
+<h1 class="mainHeader" title="Surgery Log">Surgery:</h1>
+<%--<h1 class="mainHeader" title="Surgery Log">${surgery.surgeryType} - ${surgery.procedureName}</h1>--%>
 <%--<h2 title="Surgery Type"></h2>--%>
