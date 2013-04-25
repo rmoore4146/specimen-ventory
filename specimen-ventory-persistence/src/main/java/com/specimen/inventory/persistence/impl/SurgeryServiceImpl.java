@@ -54,8 +54,10 @@ public class SurgeryServiceImpl implements SurgeryService {
 
         //now save the surgery entity with the correct join for specimen
         session.save(surgery);
+        session.flush();
 
         return surgery;
+
     }
 
     @Override

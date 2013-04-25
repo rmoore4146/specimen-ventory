@@ -3,7 +3,9 @@ package com.specimen.inventory.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * user: ryan.moore
@@ -16,35 +18,24 @@ public class Surgery implements Serializable {
     private String timeStart;
     private String timeEnd;
     private String surgeon;
-    private String procedureName;
     private AnesthesiaType anesthesiaType;
     private String anesthesiaDosage;
     private AnalgesiaType analgesiaType;
     private String analgesiaDose;
-    private List<PostOperativeBehavior> postOperativeBehaviorList;
+    private Set<PostOperativeBehavior> postOperativeBehaviorList;
     private String firstDayAfterSurgeryDescription;
     private String secondDayAfterSurgeryDescription;
     private String thirdDayAfterSurgeryDescription;
     private String specimenWeight;
     private String freeText;
     private Specimen specimen;
-    private SurgeryType surgeryType;
-
-    public SurgeryType getSurgeryType() {
-        return surgeryType;
-    }
-
-    public void setSurgeryType(SurgeryType surgeryType) {
-        this.surgeryType = surgeryType;
-    }
-
-    public Specimen getSpecimen() {
-        return specimen;
-    }
-
-    public void setSpecimen(Specimen specimen) {
-        this.specimen = specimen;
-    }
+    private Set<SurgeryType> surgeryTypes;
+    private String surgeryDescription;
+    private Set<String> procedures;
+    private Date cutDate;
+    private String histologyNotes;
+    private Date perfusionDate;
+    private String perfusionProcedure;
 
     public long getId() {
         return id;
@@ -52,22 +43,6 @@ public class Surgery implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getFreeText() {
-        return freeText;
-    }
-
-    public void setFreeText(String freeText) {
-        this.freeText = freeText;
-    }
-
-    public String getSpecimenWeight() {
-        return specimenWeight;
-    }
-
-    public void setSpecimenWeight(String specimenWeight) {
-        this.specimenWeight = specimenWeight;
     }
 
     public Date getSurgeryDate() {
@@ -102,14 +77,6 @@ public class Surgery implements Serializable {
         this.surgeon = surgeon;
     }
 
-    public String getProcedureName() {
-        return procedureName;
-    }
-
-    public void setProcedureName(String procedureName) {
-        this.procedureName = procedureName;
-    }
-
     public AnesthesiaType getAnesthesiaType() {
         return anesthesiaType;
     }
@@ -142,16 +109,15 @@ public class Surgery implements Serializable {
         this.analgesiaDose = analgesiaDose;
     }
 
-    public void setPostOperativeBehaviorList(List<PostOperativeBehavior> postOperativeBehaviorList) {
-        this.postOperativeBehaviorList = postOperativeBehaviorList;
+    public Set<PostOperativeBehavior> getPostOperativeBehaviorList() {
+        if (postOperativeBehaviorList == null) {
+            postOperativeBehaviorList = new HashSet<PostOperativeBehavior>();
+        }
+        return postOperativeBehaviorList;
     }
 
-    public List<PostOperativeBehavior> getPostOperativeBehaviorList() {
-
-        if (postOperativeBehaviorList == null) {
-            this.postOperativeBehaviorList = new ArrayList<PostOperativeBehavior>();
-        }
-        return this.postOperativeBehaviorList;
+    public void setPostOperativeBehaviorList(Set<PostOperativeBehavior> postOperativeBehaviorList) {
+        this.postOperativeBehaviorList = postOperativeBehaviorList;
     }
 
     public String getFirstDayAfterSurgeryDescription() {
@@ -176,5 +142,91 @@ public class Surgery implements Serializable {
 
     public void setThirdDayAfterSurgeryDescription(String thirdDayAfterSurgeryDescription) {
         this.thirdDayAfterSurgeryDescription = thirdDayAfterSurgeryDescription;
+    }
+
+    public String getSpecimenWeight() {
+        return specimenWeight;
+    }
+
+    public void setSpecimenWeight(String specimenWeight) {
+        this.specimenWeight = specimenWeight;
+    }
+
+    public String getFreeText() {
+        return freeText;
+    }
+
+    public void setFreeText(String freeText) {
+        this.freeText = freeText;
+    }
+
+    public Specimen getSpecimen() {
+        return specimen;
+    }
+
+    public void setSpecimen(Specimen specimen) {
+        this.specimen = specimen;
+    }
+
+    public Set<SurgeryType> getSurgeryTypes() {
+        if (surgeryTypes == null) {
+            surgeryTypes = new HashSet<SurgeryType>();
+        }
+        return surgeryTypes;
+    }
+
+    public void setSurgeryTypes(Set<SurgeryType> surgeryTypes) {
+        this.surgeryTypes = surgeryTypes;
+    }
+
+    public String getSurgeryDescription() {
+        return surgeryDescription;
+    }
+
+    public void setSurgeryDescription(String surgeryDescription) {
+        this.surgeryDescription = surgeryDescription;
+    }
+
+    public Set<String> getProcedures() {
+        if (procedures == null) {
+            procedures = new HashSet<String>();
+        }
+        return procedures;
+    }
+
+    public void setProcedures(Set<String> procedures) {
+        this.procedures = procedures;
+    }
+
+    public Date getCutDate() {
+        return cutDate;
+    }
+
+    public void setCutDate(Date cutDate) {
+        this.cutDate = cutDate;
+    }
+
+    public String getHistologyNotes() {
+        return histologyNotes;
+    }
+
+    public void setHistologyNotes(String histologyNotes) {
+        this.histologyNotes = histologyNotes;
+    }
+
+    public Date getPerfusionDate() {
+        return perfusionDate;
+    }
+
+    public void setPerfusionDate(Date perfusionDate) {
+        this.perfusionDate = perfusionDate;
+    }
+
+    public String getPerfusionProcedure() {
+        return perfusionProcedure;
+    }
+
+    public void setPerfusionProcedure(String perfusionProcedure) {
+        this.perfusionProcedure = perfusionProcedure;
     }
 }

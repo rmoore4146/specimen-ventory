@@ -3,22 +3,31 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
+    <import class="com.specimen.inventory.model.SurgeryType"/>
     <class name="com.specimen.inventory.model.Surgery" table="SURGERY">
         <id name="id" column="ID" type="java.lang.Long">
             <generator class="increment"/>
         </id>
+        <set name="procedures" table="PROCEDURETYPE_ASSOC"
+             lazy="false" fetch="select" cascade="all-delete-orphan">
+            <key column="SURGERY_ID" not-null="true" />
+            <element column="PROCEDURETYPE" type="text"/>
+        </set>
+        <set name="surgeryTypes" table="SURGERYTYPE_ASSOC"
+             lazy="false" fetch="select" cascade="all-delete-orphan">
+            <key column="SURGERY_ID" not-null="true" />
+            <element column="SURGERYTYPE" type="serializable"/>
+        </set>
         <many-to-one name="specimen" class="com.specimen.inventory.model.Specimen" column="ANIMALUUID" lazy="false"/>
         <property name="surgeryDate" type="timestamp"/>
         <property name="timeStart" />
         <property name="timeEnd" />
         <property name="surgeon" />
-        <property name="procedureName" />
         <property name="anesthesiaType" />
         <property name="anesthesiaDosage" />
         <property name="analgesiaType" />
         <property name="analgesiaDose" />
         <property name="freeText" />
-        <property name="surgeryType" />
 
         <!--postOperativeBehaviorList-->
         <!--<property name="firstDayAfterSurgeryDescription" />-->
