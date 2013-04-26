@@ -35,13 +35,13 @@
                 <thead>
                     <tr>
                         <th>Animal</th>
-                        <th>Procedure</th>
-                        <th>Type</th>
+                        <th>Procedure Type</th>
+                        <th>Surgery Type</th>
                         <th>Notes</th>
                         <th>Surgeon</th>
-                        <th>Start</th>
-                        <th>End</th>
-                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Surgery Date</th>
                         <th>Anesthesia Type</th>
                         <th>Anesthesia Dose</th>
                         <th>Analgesia Type</th>

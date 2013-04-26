@@ -91,16 +91,14 @@ public class SurgeryListViewController {
     @RequestMapping(value = "/deleteSurgery", method = RequestMethod.POST)
     public ModelAndView deleteSurgery(@ModelAttribute SurgeryFormBean surgery) {
 
-        Surgery actualSurgery = surgery.getTransformedSurgery();
-
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("partials/surgeryRow");
 
         try{
-            surgeryService.deleteSurgery(actualSurgery.getId());
-            modelAndView.addObject("surgery", new SurgeryFormBean(actualSurgery));
+            surgeryService.deleteSurgery(surgery.getSurgery().getId());
+            modelAndView.addObject("surgery", surgery);
         } catch (SurgeryServiceException sse) {
-            logger.error(SURGERY_UPDATE_MSG + " Id -" + actualSurgery.getId(), sse);
+            logger.error(SURGERY_UPDATE_MSG + " Id -" + surgery.getSurgery().getId(), sse);
             modelAndView.setViewName("error");
             modelAndView.addObject("errorMessage", SURGERY_UPDATE_MSG);
         }

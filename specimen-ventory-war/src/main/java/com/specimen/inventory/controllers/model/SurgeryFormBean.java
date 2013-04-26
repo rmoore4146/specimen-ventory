@@ -55,7 +55,7 @@ public class SurgeryFormBean {
     private Set<String> toProcedureSet(String procedureString) {
 
         Set<String> procedureSet = new HashSet<String>();
-        if (procedureString.contains(", ")) {
+        if (procedureString != null && procedureString.contains(", ")) {
             String splitString[] = procedureString.split(", ");
             for(String currentString:splitString) {
                 procedureSet.add(currentString);
