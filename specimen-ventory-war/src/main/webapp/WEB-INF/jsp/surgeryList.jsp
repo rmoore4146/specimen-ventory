@@ -46,6 +46,7 @@
                         <th>Anesthesia Dose</th>
                         <th>Analgesia Type</th>
                         <th>Analgesia Dose</th>
+
                         <th></th>
                     </tr>
                 </thead>

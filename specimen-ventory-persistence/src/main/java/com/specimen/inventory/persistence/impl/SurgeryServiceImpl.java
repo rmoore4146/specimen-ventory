@@ -77,6 +77,7 @@ public class SurgeryServiceImpl implements SurgeryService {
         logger.debug("Fetching all surgery objects");
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
+        query.setMaxResults(5000);
         Set<Surgery> surgerySet = new HashSet<Surgery>(query.list());
 
         return surgerySet;
@@ -90,6 +91,7 @@ public class SurgeryServiceImpl implements SurgeryService {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
         query.setParameter("animalId", id);
+        query.setMaxResults(5000);
         Set<Surgery> surgerySet = new HashSet<Surgery>(query.list());
 
         return surgerySet;
@@ -103,6 +105,7 @@ public class SurgeryServiceImpl implements SurgeryService {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(queryStr);
         query.setParameter("animalId", uuid);
+        query.setMaxResults(5000);
         Set<Surgery> surgerySet = new HashSet<Surgery>(query.list());
 
         return surgerySet;

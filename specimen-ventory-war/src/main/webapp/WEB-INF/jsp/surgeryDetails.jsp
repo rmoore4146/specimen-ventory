@@ -15,6 +15,7 @@
     <link type="text/css" href="${contextPath}/site/css/common.css" rel="Stylesheet" />
     <link type="text/css" href="${contextPath}/site/css/surgeryDetails.css" rel="Stylesheet" />
     <link type="text/css" href="${contextPath}/site/css/header.css" rel="Stylesheet" />
+    <link type="text/css" href="${contextPath}/site/css/bootstrap/css/bootstrap-responsive.css" rel="Stylesheet" />
     <script type="text/javascript" src="${contextPath}/site/javascript/jquery-1.8.2.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/datatables-1.8.2/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="${contextPath}/site/javascript/surgeryDetails.js"></script>
@@ -25,7 +26,7 @@
 <div id="pageContainer">
     <%--Include file header--%>
     <%@include file="headers/surgeryDetailsHeader.jsp"%>
-        <form id="surgeryForm">
+        <form id="surgeryForm" class=".form-horizontal">
             <div class="surgeryContainer">
                 <%@include file="partials/surgeryFormFields.jsp"%>
             </div>

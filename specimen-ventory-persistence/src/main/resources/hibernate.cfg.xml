@@ -9,7 +9,7 @@
     <property name="show_sql">true</property>
 
     <property name="format_sql">true</property>
-    <property name="hbm2ddl.auto">update</property>
+    <!--<property name="hbm2ddl.auto">update</property>-->
 
     <!-- JDBC connection pool (use the built-in) -->
     <property name="connection.pool_size">1</property>
@@ -17,6 +17,7 @@
     <!-- Mapping files will go here.... -->
     <!-- List of XML mapping files -->
     <mapping resource="orm/Specimen.xml" class="com.specimen.inventory.model.Specimen"/>
+    <mapping resource="orm/TableColumnDefinition.xml" class="com.specimen.inventory.model.TableColumnDefinition"/>
     <mapping resource="orm/Surgery.xml" class="com.specimen.inventory.model.Surgery"/>
 </session-factory>
 </hibernate-configuration>

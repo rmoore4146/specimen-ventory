@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+    <import class="com.specimen.inventory.model.TableColumnDefinition"/>
+    <class name="com.specimen.inventory.model.TableColumnDefinition" table="TABLECOLUMNDEFINITION">
+        <id name="id" column="ID" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+        <property name="enabled" type="true_false" />
+        <property name="type" column="DATATYPE" />
+        <property name="editable" type="true_false" />
+        <property name="columnName" />
+        <property name="viewedByDefault" column="VIEWBYDEFAULT"/>
+    </class>
+</hibernate-mapping>

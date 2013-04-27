@@ -10,29 +10,31 @@
 /*}*/
 
 #pageContainer form {
+    margin-top: 50px;
     float:left;
     width:650px;
     height: 425px;
 }
 
-.surgeryContainer label {
-    text-align: left;
-    font-size:14px;
-    float:left;
-    font-weight: bold;
-    color: #000000;
-    width: 150px;
-    padding:5px;
-}
+#pageContainer .form-horizontal .controls{ margin-left:50px;}
+/*.surgeryContainer label {*/
+    /*text-align: left;*/
+    /*font-size:14px;*/
+    /*float:left;*/
+    /*font-weight: bold;*/
+    /*color: #000000;*/
+    /*width: 150px;*/
+    /*padding:5px;*/
+/*}*/
 
-.surgeryContainer span, input, select {
-    font-size:14px;
-    float:left;
-    color: #000000;
-    padding:5px;
-}
+/*.surgeryContainer span, input, select {*/
+    /*font-size:14px;*/
+    /*float:left;*/
+    /*color: #000000;*/
+    /*padding:5px;*/
+/*}*/
 
-.buttonContainer {
-    float:right;
-    margin-right: -12px;
-}
+/*.buttonContainer {*/
+    /*float:right;*/
+    /*margin-right: -12px;*/
+/*}*/

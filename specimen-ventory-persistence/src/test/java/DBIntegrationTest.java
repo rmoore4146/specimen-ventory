@@ -1,11 +1,13 @@
 import com.specimen.inventory.model.AnalgesiaType;
 import com.specimen.inventory.model.AnesthesiaType;
-import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.Specimen;
 import com.specimen.inventory.model.Surgery;
 import com.specimen.inventory.model.SurgeryType;
+import com.specimen.inventory.model.TableColumnDefinition;
+import com.specimen.inventory.model.TableColumnType;
 import com.specimen.inventory.service.SpecimenService;
 import com.specimen.inventory.service.SurgeryService;
+import com.specimen.inventory.service.TableColumnDefinitionService;
 import com.specimen.inventory.service.exception.SpecimenServiceException;
 import com.specimen.inventory.service.exception.SurgeryServiceException;
 import junit.framework.Assert;
@@ -30,6 +32,9 @@ public class DBIntegrationTest {
 
     @Autowired
     SpecimenService specimenService;
+
+    @Autowired
+    TableColumnDefinitionService tableColumnDefinitionService;
 
     @Test
     public void testCreateSurgery() throws SurgeryServiceException {
@@ -69,6 +74,12 @@ public class DBIntegrationTest {
         Assert.assertNull(specimen);
     }
 
+    @Test
+    public void testPersistTableColumnDefinition() throws Exception {
+        TableColumnDefinition def = tableColumnDefinitionService.saveTableColumnDefinition(getTableColumnDefinition());
+        Assert.assertNotNull(def);
+    }
+
     private Surgery getHeadSurgery() {
         Surgery surgery = new Surgery();
         surgery.setAnalgesiaDose("23G");
@@ -90,5 +101,15 @@ public class DBIntegrationTest {
         surgery.setTimeEnd("1");
         surgery.setTimeStart("1");
         return surgery;
+    }
+
+    private TableColumnDefinition getTableColumnDefinition() {
+        TableColumnDefinition def = new TableColumnDefinition();
+        def.setColumnName("Blah blah");
+        def.setEditable(true);
+        def.setEnabled(true);
+        def.setType(TableColumnType.TEXT);
+        def.setViewedByDefault(true);
+        return def;
     }
 }
