@@ -9,5 +9,5 @@
     <span class="link listSpan">Surgery List</span> |
     <span class="link createSpan">Create Surgery</span>
 </h1>
-<h1 class="mainHeader" title="Surgery Log">Surgery:</h1>
+<h1 class="mainHeader" title="Table Settings">Table Settings:</h1>
 
